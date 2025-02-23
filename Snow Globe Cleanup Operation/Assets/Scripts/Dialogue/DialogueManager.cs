@@ -14,7 +14,6 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] float fadeSpeed;
     [SerializeField] Image fadeOverlay;
-    [SerializeField] private GameObject dialoguePanel;
     [SerializeField] public RectTransform[] UI_elements;
     [SerializeField] private TMP_Text nameUI;
     [SerializeField] private TMP_Text contextUI;
@@ -47,8 +46,6 @@ public class DialogueManager : MonoBehaviour
                 }
             });
         }
-        
-        dialoguePanel.SetActive(false);
 
         StartDialogue();
     }
@@ -88,7 +85,6 @@ public class DialogueManager : MonoBehaviour
 
         currDialogueIdx = 0;
         currContextIdx = 0;
-        dialoguePanel.SetActive(true);
         DisplayDialogue();
     }
 
@@ -156,7 +152,9 @@ public class DialogueManager : MonoBehaviour
         skipTyping = false;
         contextUI.text = "";
         
-        foreach (char letter in sentence)
+        // 단어별 애니메이션
+        string[] words = sentence.Split(' ');
+        foreach (string word in words)
         {
             if (skipTyping)
             {
@@ -165,9 +163,24 @@ public class DialogueManager : MonoBehaviour
                 skipTyping = false;
                 yield break;
             }
-            contextUI.text += letter;
-            yield return new WaitForSeconds(0.01f);
+            contextUI.text += word + " ";
+            yield return new WaitForSeconds(0.05f);
         }
+
+        // // 문자별 애니메이션 -> TMP tag 사용위해서 단어별 애니메이션으로 대체하였음
+        // foreach (char letter in sentence)
+        // {
+        //     if (skipTyping)
+        //     {
+        //         contextUI.text = sentence;
+        //         isTyping = false;
+        //         skipTyping = false;
+        //         yield break;
+        //     }
+        //     contextUI.text += letter;
+        //     yield return new WaitForSeconds(0.01f);
+        // }
+
         isTyping = false;
     }
 
@@ -214,7 +227,6 @@ public class DialogueManager : MonoBehaviour
         nameUI.text = "";
         contextUI.text = "";
         StartCoroutine(viewManager.SpriteChangeCoroutine("", ""));
-        dialoguePanel.SetActive(false);
         SceneManager.LoadScene("Game");
     }
 
