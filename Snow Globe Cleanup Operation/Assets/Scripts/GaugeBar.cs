@@ -33,9 +33,9 @@ public class GaugeBar : MonoBehaviour
     public void SetGauge()
     {
         touchCnt++;
+        gaugeBar.value = touchCnt;
         if (touchCnt < maxGauge)
         {
-            gaugeBar.value = touchCnt;
             Debug.Log("Å¬¸¯ È½¼ö: " + touchCnt);
         }
         else
