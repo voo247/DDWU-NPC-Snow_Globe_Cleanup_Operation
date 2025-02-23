@@ -1,12 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
     float moveDistance = 1f;
     public LayerMask wallLayer;
     public LayerMask snowballLayer;
+    public Button upButton;
+    public Button downButton;
+    public Button leftButton;
+    public Button rightButton;
 
-    public Vector2 successPosition = new Vector2(3.5f, -4.5f);
+    public Vector2 exit = new Vector2(4.5f, -4.5f);
 
     Vector2 playerPosition;
     Vector2 snowballPosition;
@@ -15,20 +20,29 @@ public class PlayerMove : MonoBehaviour
 
     bool isSnowballMoved;
 
+    private void Start()
+    {
+        upButton.onClick.AddListener(() => Move(Vector2.up));
+        downButton.onClick.AddListener(() => Move(Vector2.down));
+        leftButton.onClick.AddListener(() => Move(Vector2.left));
+        rightButton.onClick.AddListener(() => Move(Vector2.right));
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             Move(Vector2.up);
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            Move(Vector2.left);
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             Move(Vector2.down);
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            Move(Vector2.left);
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             Move(Vector2.right);
     }
 
     void Move(Vector2 direction)
     {
+        Debug.Log(exit);
         Vector2 targetPosition = (Vector2)transform.position + direction * moveDistance;
 
         if (Physics2D.OverlapPoint(targetPosition, wallLayer))
@@ -56,14 +70,15 @@ public class PlayerMove : MonoBehaviour
                 snowball.transform.localScale *= 1.3f;
             }
             Debug.Log(snowball.transform.position);
-            if (Vector2.Distance(snowball.transform.position, successPosition) <= 0.5f)
+            if (Vector2.Distance(snowball.transform.position, exit) <= 0.5f)
             {
+                Debug.Log($"Snowball Position: " + snowball.transform.position + "Success Position: " + exit);
                 Debug.Log("미션 성공");
             }
         }
-        else // 눈덩이가 없는 경우 플레이어 이동
+        else
         {
-            playerPosition = transform.position; // 이동 확정 후 저장
+            playerPosition = transform.position;
             transform.position = targetPosition;
             isSnowballMoved = false;
         }
@@ -78,7 +93,15 @@ public class PlayerMove : MonoBehaviour
             lastMovedSnowball.transform.position = snowballPosition;
 
             if (snowballMoveCnt > 0)
+            {
+                if (snowballMoveCnt % 3 == 0 && snowballMoveCnt <= 9)
+                {
+                    lastMovedSnowball.transform.localScale /= 1.3f;
+                }
+
                 snowballMoveCnt--;
+                isSnowballMoved = false;
+            }
         }
     }
 }
