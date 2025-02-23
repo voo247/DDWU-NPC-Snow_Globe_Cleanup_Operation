@@ -17,4 +17,7 @@ public class Dialogue
     
     [HideInInspector]
     public string[] eventName;
+    
+    [HideInInspector]
+    public string[] backgroundName;
 }
