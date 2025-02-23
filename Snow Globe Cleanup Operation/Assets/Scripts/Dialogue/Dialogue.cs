@@ -12,4 +12,9 @@ public class Dialogue
     [HideInInspector]
     public string[] spriteName;
 
+    [HideInInspector]
+    public string[] soundName;
+    
+    [HideInInspector]
+    public string[] eventName;
 }

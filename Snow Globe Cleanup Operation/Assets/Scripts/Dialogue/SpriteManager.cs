@@ -6,7 +6,7 @@ public class SpriteManager : MonoBehaviour
 {
     [SerializeField] float fadeSpeed;
     [SerializeField] Image currSprite;
-    private string currSpriteCharater = "";
+    [HideInInspector] public string currSpriteCharater = "";
     
     public IEnumerator SpriteChangeCoroutine(string name, string newSpriteName)
     {
