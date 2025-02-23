@@ -30,6 +30,7 @@ public class DialogueParser : MonoBehaviour
             List<string> spriteList = new List<string>();
             List<string> soundList = new List<string>();
             List<string> eventList = new List<string>();
+            List<string> backgroundList = new List<string>();
             
             do
             {
@@ -37,6 +38,7 @@ public class DialogueParser : MonoBehaviour
                 spriteList.Add(row[3].Trim());
                 soundList.Add(row[4].Trim());
                 eventList.Add(row[5].Trim());
+                backgroundList.Add(row[6].Trim());
 
                 if (++i >= data.Length - 1)
                 {
@@ -50,6 +52,7 @@ public class DialogueParser : MonoBehaviour
             dialogue.spriteName = spriteList.ToArray();
             dialogue.soundName = soundList.ToArray();
             dialogue.eventName = eventList.ToArray();
+            dialogue.backgroundName = backgroundList.ToArray();
 
             dialogueList.Add(dialogue);
         }

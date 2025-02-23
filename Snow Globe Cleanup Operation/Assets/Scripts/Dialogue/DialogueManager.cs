@@ -14,26 +14,38 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] float fadeSpeed;
     [SerializeField] Image fadeOverlay;
-    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] public RectTransform[] UI_elements;
     [SerializeField] private TMP_Text nameUI;
     [SerializeField] private TMP_Text contextUI;
     [SerializeField] private Button nextButton;
     [SerializeField] private DialogueParser parser;
-    [SerializeField] private SpriteManager spriteManager;
+    [SerializeField] private ViewManager viewManager;
 
     private Dialogue[] dialogueList;
     private int currDialogueIdx;
     private int currContextIdx;
 
     private bool isTyping = false;
-    private bool cancelTyping = false;
+    private bool skipTyping = false;
 
     void Start()
     {
         if (nextButton != null)
-            nextButton.onClick.AddListener(() => StartCoroutine(DisplayNextSentence()));
-        
-        dialoguePanel.SetActive(false);
+        {
+            nextButton.onClick.AddListener(() =>
+            {
+                if (isTyping)
+                {
+                    skipTyping = true;
+                    isTyping = false;
+                    viewManager.skipTransition = true;
+                }
+                else
+                {
+                    StartCoroutine(DisplayNextSentence());
+                }
+            });
+        }
 
         StartDialogue();
     }
@@ -42,13 +54,18 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
+            skipTyping = true;
+            isTyping = false;
+            viewManager.skipTransition = true;
             EndDialogue();
         }
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isTyping)
             {
-                cancelTyping = true;
+                skipTyping = true;
+                isTyping = false;
+                viewManager.skipTransition = true;
             }
             else
             {
@@ -68,7 +85,6 @@ public class DialogueManager : MonoBehaviour
 
         currDialogueIdx = 0;
         currContextIdx = 0;
-        dialoguePanel.SetActive(true);
         DisplayDialogue();
     }
 
@@ -79,6 +95,8 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+
+        viewManager.skipTransition = false;
 
         Dialogue currDialogue = dialogueList[currDialogueIdx];
 
@@ -97,47 +115,73 @@ public class DialogueManager : MonoBehaviour
         {
             nameUI.text = "";
         }
+
         StartCoroutine(TypeSentence(currDialogue.context[currContextIdx]));
 
         // 효과음 재생
-        if (!string.IsNullOrEmpty(currDialogue.soundName[currContextIdx]))
+        
+        if (!skipTyping)
         {
-            AudioClip clip = Resources.Load<AudioClip>("Sounds/Dialogue/" + currDialogue.soundName[currContextIdx]);
-            if (clip != null)
+            if (!string.IsNullOrEmpty(currDialogue.soundName[currContextIdx]))
             {
-                AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
-            }
-            else
-            {
-                Debug.LogWarning("DialogueManager: 사운드 클립을 찾을 수 없음 (" + currDialogue.soundName[currContextIdx] + ")");
+                AudioClip clip = Resources.Load<AudioClip>("Sounds/Dialogue/" + currDialogue.soundName[currContextIdx]);
+                if (clip != null)
+                {
+                    AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager: 사운드 클립을 찾을 수 없음 (" + currDialogue.soundName[currContextIdx] + ")");
+                }
             }
         }
 
-        // 스탠딩 이미지 변경
-        StartCoroutine(spriteManager.SpriteChangeCoroutine(
+        // 이미지 변경
+        StartCoroutine(viewManager.SpriteChangeCoroutine(
             currDialogue.name, 
             currDialogue.spriteName[currContextIdx]
+        ));
+        StartCoroutine(viewManager.BackgroundChangeCoroutine(
+            currDialogue.backgroundName[currContextIdx]
         ));
     }
 
     private IEnumerator TypeSentence(string sentence)
     {
         isTyping = true;
-        cancelTyping = false;
+        skipTyping = false;
         contextUI.text = "";
         
-        foreach (char letter in sentence)
+        // 단어별 애니메이션
+        string[] words = sentence.Split(' ');
+        foreach (string word in words)
         {
-            if (cancelTyping)
+            if (skipTyping)
             {
                 contextUI.text = sentence;
-                break;
+                isTyping = false;
+                skipTyping = false;
+                yield break;
             }
-            contextUI.text += letter;
-            yield return new WaitForSeconds(0.02f);
+            contextUI.text += word + " ";
+            yield return new WaitForSeconds(0.05f);
         }
+
+        // // 문자별 애니메이션 -> TMP tag 사용위해서 단어별 애니메이션으로 대체하였음
+        // foreach (char letter in sentence)
+        // {
+        //     if (skipTyping)
+        //     {
+        //         contextUI.text = sentence;
+        //         isTyping = false;
+        //         skipTyping = false;
+        //         yield break;
+        //     }
+        //     contextUI.text += letter;
+        //     yield return new WaitForSeconds(0.01f);
+        // }
+
         isTyping = false;
-        cancelTyping = false;
     }
 
     public IEnumerator DisplayNextSentence()
@@ -182,8 +226,7 @@ public class DialogueManager : MonoBehaviour
     {
         nameUI.text = "";
         contextUI.text = "";
-        StartCoroutine(spriteManager.SpriteChangeCoroutine("", ""));
-        dialoguePanel.SetActive(false);
+        StartCoroutine(viewManager.SpriteChangeCoroutine("", ""));
         SceneManager.LoadScene("Game");
     }
 
@@ -191,23 +234,21 @@ public class DialogueManager : MonoBehaviour
     {
         if (eventName.Equals("fade", System.StringComparison.OrdinalIgnoreCase))
         {
+            if (skipTyping)
+            {
+                yield break;
+            }
             yield return StartCoroutine(FadeOut(fadeOverlay));
-            yield return new WaitForSeconds(0.5f);
+            if (!skipTyping) yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(FadeIn(fadeOverlay));
-
-            // // 페이드 아웃-페이드 인 화면 전환 시 캐릭터 스프라이트가 달라질 때 페이드 화면 전환 일어나지 않도록 설정 (과한 애니메이션 방지)
-            // if (currContextIdx < dialogueList[currDialogueIdx].context.Length - 1)
-            // {
-            //     spriteManager.currSpriteCharater = dialogueList[currDialogueIdx].spriteName[currContextIdx + 1];
-            // }
-            // else
-            // {
-            //     spriteManager.currSpriteCharater = dialogueList[currDialogueIdx + 1].spriteName[0];
-            // }
         }
         else if (eventName.Equals("shake", System.StringComparison.OrdinalIgnoreCase))
         {
-            yield return StartCoroutine(ScreenShake());
+            if (skipTyping)
+            {
+                yield break;
+            }
+            yield return StartCoroutine(ScreenShake(UI_elements));
         }
     }
 
@@ -216,6 +257,12 @@ public class DialogueManager : MonoBehaviour
         Color color = fadeOverlay.color;
         while (color.a < 1)
         {
+            if (skipTyping)
+            {
+                color.a = 1;
+                fadeOverlay.color = color;
+                yield break;
+            }
             color.a += Time.deltaTime * fadeSpeed;
             fadeOverlay.color = color;
             yield return null;
@@ -227,25 +274,51 @@ public class DialogueManager : MonoBehaviour
         Color color = fadeOverlay.color;
         while (color.a > 0)
         {
+            if (skipTyping)
+            {
+                color.a = 0;
+                fadeOverlay.color = color;
+                yield break;
+            }
             color.a -= Time.deltaTime * fadeSpeed;
             fadeOverlay.color = color;
             yield return null;
         }
     }
 
-    private IEnumerator ScreenShake()
+    private IEnumerator ScreenShake(RectTransform[] UI_elements)
     {
-        Vector3 originalPos = Camera.main.transform.position;
+        Vector2[] originalPositions = new Vector2[UI_elements.Length];
+        for (int i = 0; i < UI_elements.Length; i++)
+        {
+            originalPositions[i] = UI_elements[i].anchoredPosition;
+        }
+
         float duration = 1f;
         float elapsed = 0f;
+        float magnitude = 10f;
+
+        // UI 오브젝트 흔들기
         while (elapsed < duration)
         {
-            float offsetX = Random.Range(-0.3f, 0.3f);
-            float offsetY = Random.Range(-0.3f, 0.3f);
-            Camera.main.transform.position = originalPos + new Vector3(offsetX, offsetY, 0);
+            if (skipTyping)
+            {
+                break;
+            }
+            for (int i = 0; i < UI_elements.Length; i++)
+            {
+                float offsetX = Random.Range(-1f, 1f) * (magnitude - elapsed * 2);
+                float offsetY = Random.Range(-1f, 1f) * (magnitude - elapsed * 2);
+                UI_elements[i].anchoredPosition = originalPositions[i] + new Vector2(offsetX, offsetY);
+            }
             elapsed += Time.deltaTime;
             yield return null;
         }
-        Camera.main.transform.position = originalPos;
+
+        // 모든 UI 오브젝트를 원래 위치로 복귀
+        for (int i = 0; i < UI_elements.Length; i++)
+        {
+            UI_elements[i].anchoredPosition = originalPositions[i];
+        }
     }
 }
