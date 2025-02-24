@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameReset : MonoBehaviour
+public class Reset : MonoBehaviour
 {
-    public void ResetGame()
+    public void GamReset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
