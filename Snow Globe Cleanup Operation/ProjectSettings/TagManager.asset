@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Snowball
+  - Success
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Wall
   - Snowball
-  - 
+  - Success
   - 
   - 
   - 
