@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +7,12 @@ public class PlayerMove : MonoBehaviour
     float moveDistance = 1f;
     public LayerMask wallLayer;
     public LayerMask snowballLayer;
+    public LayerMask successLayer;
     public Button upButton;
     public Button downButton;
     public Button leftButton;
     public Button rightButton;
-
-    public Vector2 exit = new Vector2(4.5f, -4.5f);
+    public GameObject SuccessPanel;
 
     Vector2 playerPosition;
     Vector2 snowballPosition;
@@ -22,6 +23,11 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+        SuccessPanel.SetActive(false);
+
+        successLayer = LayerMask.GetMask("Success");
+        Debug.Log($"설정된 successLayer 값: {successLayer.value}");
+
         upButton.onClick.AddListener(() => Move(Vector2.up));
         downButton.onClick.AddListener(() => Move(Vector2.down));
         leftButton.onClick.AddListener(() => Move(Vector2.left));
@@ -42,7 +48,6 @@ public class PlayerMove : MonoBehaviour
 
     void Move(Vector2 direction)
     {
-        Debug.Log(exit);
         Vector2 targetPosition = (Vector2)transform.position + direction * moveDistance;
 
         if (Physics2D.OverlapPoint(targetPosition, wallLayer))
@@ -70,10 +75,10 @@ public class PlayerMove : MonoBehaviour
                 snowball.transform.localScale *= 1.3f;
             }
             Debug.Log(snowball.transform.position);
-            if (Vector2.Distance(snowball.transform.position, exit) <= 0.5f)
+            if (Physics2D.OverlapPoint(snowballTarget, successLayer))
             {
-                Debug.Log($"Snowball Position: " + snowball.transform.position + "Success Position: " + exit);
                 Debug.Log("미션 성공");
+                SuccessPanel.SetActive(true);
             }
         }
         else
