@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
     {
         playerStartPosition = transform.position;
 
-        Collider2D snowball = Physics2D.OverlapCircle(transform.position, 3f, snowballLayer);
+        Collider2D snowball = Physics2D.OverlapCircle(transform.position, 4f, snowballLayer);
         snowballStartPosition = snowball.transform.position;
         snowballStartScale = snowball.transform.localScale;
 
