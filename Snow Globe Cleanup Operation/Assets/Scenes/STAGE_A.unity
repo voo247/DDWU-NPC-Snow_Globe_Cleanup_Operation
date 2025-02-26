@@ -3002,14 +3002,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 559942806}
         m_TargetAssemblyTypeName: transHome, Assembly-CSharp
-        m_MethodName: SceneChange
-        m_Mode: 1
+        m_MethodName: OnSuccessButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: STAGEA
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &559942808
@@ -10128,6 +10128,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1246434552}
+  - {fileID: 1864035694}
   - {fileID: 1308813550}
   - {fileID: 1902642259}
-  - {fileID: 1864035694}
