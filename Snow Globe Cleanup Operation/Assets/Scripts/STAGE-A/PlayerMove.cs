@@ -13,9 +13,17 @@ public class PlayerMove : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
     public GameObject SuccessPanel;
+    public Sprite upPlayer;
+    public Sprite downPlayer;
+    public Sprite leftPlayer;
+    public Sprite rightPlayer;
+    public Image playerImage;
 
     Vector2 playerPosition;
     Vector2 snowballPosition;
+    Vector2 playerStartPosition;
+    Vector2 snowballStartPosition;
+    Vector3 snowballStartScale;
     Collider2D lastMovedSnowball;
     int snowballMoveCnt;
 
@@ -23,31 +31,38 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+        playerStartPosition = transform.position;
+
+        Collider2D snowball = Physics2D.OverlapCircle(transform.position, 3f, snowballLayer);
+        snowballStartPosition = snowball.transform.position;
+        snowballStartScale = snowball.transform.localScale;
+
         SuccessPanel.SetActive(false);
 
         successLayer = LayerMask.GetMask("Success");
         Debug.Log($"설정된 successLayer 값: {successLayer.value}");
 
-        upButton.onClick.AddListener(() => Move(Vector2.up));
-        downButton.onClick.AddListener(() => Move(Vector2.down));
-        leftButton.onClick.AddListener(() => Move(Vector2.left));
-        rightButton.onClick.AddListener(() => Move(Vector2.right));
+        upButton.onClick.AddListener(() => Move(Vector2.up, upPlayer));
+        downButton.onClick.AddListener(() => Move(Vector2.down, downPlayer));
+        leftButton.onClick.AddListener(() => Move(Vector2.left, leftPlayer));
+        rightButton.onClick.AddListener(() => Move(Vector2.right, rightPlayer));
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            Move(Vector2.up);
+            Move(Vector2.up, upPlayer);
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            Move(Vector2.down);
+            Move(Vector2.down, downPlayer);
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            Move(Vector2.left);
+            Move(Vector2.left, leftPlayer);
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            Move(Vector2.right);
+            Move(Vector2.right, rightPlayer);
     }
 
-    void Move(Vector2 direction)
+    void Move(Vector2 direction, Sprite directionSprite)
     {
+        playerImage.sprite = directionSprite;
         Vector2 targetPosition = (Vector2)transform.position + direction * moveDistance;
 
         if (Physics2D.OverlapPoint(targetPosition, wallLayer))
@@ -108,5 +123,19 @@ public class PlayerMove : MonoBehaviour
                 isSnowballMoved = false;
             }
         }
+    }
+
+    public void Restart()
+    {
+        transform.position = playerStartPosition;
+        lastMovedSnowball.transform.position = snowballStartPosition;
+        lastMovedSnowball.transform.localScale = snowballStartScale;
+
+        snowballMoveCnt = 0;
+        isSnowballMoved = false;
+        lastMovedSnowball = null;
+
+        SuccessPanel.SetActive(false);
+        playerImage.sprite = downPlayer;
     }
 }
