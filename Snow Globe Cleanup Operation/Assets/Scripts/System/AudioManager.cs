@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private GameObject settingPopup;
     public static AudioManager Instance;
     public bool isMuted = false;
 
@@ -43,15 +42,5 @@ public class AudioManager : MonoBehaviour
         isMuted = false;
         PlayerPrefs.SetInt("Muted", 0);
         UpdateAudio();
-    }
-    
-    public void OpenSettingPopup()
-    {
-        settingPopup.SetActive(true);
-    }
-
-    public void CloseSettingPopup()
-    {
-        settingPopup.SetActive(false);
     }
 }
