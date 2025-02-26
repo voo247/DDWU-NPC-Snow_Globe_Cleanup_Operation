@@ -199,12 +199,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72639667}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.87, y: -0.11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -587, y: -11, z: -9000}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 139683316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139683315
 GameObject:
@@ -229,7 +229,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139683315}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -241,7 +241,9 @@ RectTransform:
   - {fileID: 363535632}
   - {fileID: 954830294}
   - {fileID: 2072836066}
-  m_Father: {fileID: 1864035694}
+  - {fileID: 72639669}
+  - {fileID: 473573617}
+  m_Father: {fileID: 769474069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -260,7 +262,6 @@ GameObject:
   - component: {fileID: 158910579}
   - component: {fileID: 158910578}
   - component: {fileID: 158910577}
-  - component: {fileID: 158910580}
   m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
@@ -331,13 +332,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158910580}
-        m_TargetAssemblyTypeName: StarOnOff, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: ToggleOnce
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2072836065}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -381,20 +382,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158910575}
   m_CullTransparentMesh: 1
---- !u!114 &158910580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158910575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2adb2e07b841540999ce8853a54259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 2072836065}
-  flag: 0
 --- !u!1 &177922337
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +442,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 567135927750843655, guid: 15c18b9e3f8672741a4fd72c83845ec5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -494,7 +481,6 @@ GameObject:
   - component: {fileID: 363535635}
   - component: {fileID: 363535634}
   - component: {fileID: 363535633}
-  - component: {fileID: 363535636}
   m_Layer: 5
   m_Name: SnowDeco (2)
   m_TagString: Untagged
@@ -565,10 +551,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 363535636}
-        m_TargetAssemblyTypeName: TreeObject, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -615,19 +601,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363535631}
   m_CullTransparentMesh: 1
---- !u!114 &363535636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363535631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ebc2ed833d59b44c88884b658ec82ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1967374034}
 --- !u!1 &438587821
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,12 +757,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473573615}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.83, y: -0.06, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -583, y: -6, z: -9000}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 139683316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508155444
 GameObject:
@@ -803,7 +776,6 @@ GameObject:
   - component: {fileID: 508155448}
   - component: {fileID: 508155447}
   - component: {fileID: 508155446}
-  - component: {fileID: 508155449}
   m_Layer: 5
   m_Name: BallDeco (2)
   m_TagString: Untagged
@@ -874,14 +846,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 508155449}
-        m_TargetAssemblyTypeName: TreeObject, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -924,19 +896,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508155444}
   m_CullTransparentMesh: 1
---- !u!114 &508155449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508155444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ebc2ed833d59b44c88884b658ec82ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1135350316}
 --- !u!1 &559942804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,15 +1064,54 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701341835}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 800791001}
+  - {fileID: 1135350317}
+  - {fileID: 878738387}
+  - {fileID: 1967374035}
+  - {fileID: 158910576}
+  m_Father: {fileID: 769474069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &769474068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769474069}
+  - component: {fileID: 769474070}
+  m_Layer: 5
+  m_Name: Obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &769474069
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769474068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1135350317}
-  - {fileID: 878738387}
-  - {fileID: 1967374035}
-  - {fileID: 158910576}
+  - {fileID: 701341836}
+  - {fileID: 139683316}
   m_Father: {fileID: 1864035694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1121,6 +1119,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &769474070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769474068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a18dac384c95674cbd8d377e59a66e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comb: {fileID: 878738386}
+  Star: {fileID: 158910575}
+  StarD: {fileID: 2072836065}
+  Box: {fileID: 800790999}
+  SB:
+  - {fileID: 1967374034}
+  - {fileID: 1135350316}
+  SBD:
+  - {fileID: 1981135711}
+  - {fileID: 363535631}
+  - {fileID: 954830293}
+  - {fileID: 1405612951}
+  - {fileID: 508155444}
+  - {fileID: 1782212995}
+  Tree1: {fileID: 72639667}
+  Tree2: {fileID: 473573615}
 --- !u!1 &800790999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &800791000
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1181,7 +1207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: -1488058646451916235, guid: e94e71734644e184aa58e509f6ef9a7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1201,12 +1227,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800790999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 500, y: -100, z: -9000}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 701341836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843518566
 GameObject:
@@ -1365,7 +1391,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 878738389}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: OpenBox
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 800790999}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &878738389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,7 +1574,6 @@ GameObject:
   - component: {fileID: 954830297}
   - component: {fileID: 954830296}
   - component: {fileID: 954830295}
-  - component: {fileID: 954830298}
   m_Layer: 5
   m_Name: SnowDeco (3)
   m_TagString: Untagged
@@ -1607,10 +1644,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 954830298}
-        m_TargetAssemblyTypeName: TreeObject, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1657,19 +1694,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954830293}
   m_CullTransparentMesh: 1
---- !u!114 &954830298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954830293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ebc2ed833d59b44c88884b658ec82ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1967374034}
 --- !u!1 &1068503499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,7 +1783,6 @@ GameObject:
   - component: {fileID: 1135350320}
   - component: {fileID: 1135350319}
   - component: {fileID: 1135350318}
-  - component: {fileID: 1135350321}
   m_Layer: 5
   m_Name: Ball
   m_TagString: Untagged
@@ -1830,14 +1853,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1135350321}
-        m_TargetAssemblyTypeName: OnOff, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Toggle
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1880,23 +1903,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135350316}
   m_CullTransparentMesh: 1
---- !u!114 &1135350321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135350316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d0fa4539edeab458876b6dc13601a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject:
-  - {fileID: 1405612951}
-  - {fileID: 508155444}
-  - {fileID: 1782212995}
-  flag: 0
 --- !u!1 &1246434549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,7 +2268,6 @@ GameObject:
   - component: {fileID: 1405612955}
   - component: {fileID: 1405612954}
   - component: {fileID: 1405612953}
-  - component: {fileID: 1405612956}
   m_Layer: 5
   m_Name: BallDeco (1)
   m_TagString: Untagged
@@ -2333,14 +2338,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405612956}
-        m_TargetAssemblyTypeName: TreeObject, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2383,19 +2388,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405612951}
   m_CullTransparentMesh: 1
---- !u!114 &1405612956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405612951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ebc2ed833d59b44c88884b658ec82ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1135350316}
 --- !u!1 &1487174046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,7 +2665,6 @@ GameObject:
   - component: {fileID: 1782212999}
   - component: {fileID: 1782212998}
   - component: {fileID: 1782212997}
-  - component: {fileID: 1782213000}
   m_Layer: 5
   m_Name: BallDeco (3)
   m_TagString: Untagged
@@ -2744,14 +2735,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1782213000}
-        m_TargetAssemblyTypeName: TreeObject, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2794,19 +2785,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782212995}
   m_CullTransparentMesh: 1
---- !u!114 &1782213000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782212995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ebc2ed833d59b44c88884b658ec82ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1135350316}
 --- !u!1 &1846476371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,8 +3082,7 @@ RectTransform:
   - {fileID: 843518567}
   - {fileID: 1367337511}
   - {fileID: 438587822}
-  - {fileID: 701341836}
-  - {fileID: 139683316}
+  - {fileID: 769474069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3208,7 +3185,6 @@ GameObject:
   - component: {fileID: 1967374038}
   - component: {fileID: 1967374037}
   - component: {fileID: 1967374036}
-  - component: {fileID: 1967374039}
   m_Layer: 5
   m_Name: Snow
   m_TagString: Untagged
@@ -3279,10 +3255,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1967374039}
-        m_TargetAssemblyTypeName: OnOff, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Toggle
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3329,23 +3305,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967374034}
   m_CullTransparentMesh: 1
---- !u!114 &1967374039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967374034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d0fa4539edeab458876b6dc13601a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject:
-  - {fileID: 1981135711}
-  - {fileID: 363535631}
-  - {fileID: 954830293}
-  flag: 0
 --- !u!1 &1981135711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,7 +3317,6 @@ GameObject:
   - component: {fileID: 1981135715}
   - component: {fileID: 1981135714}
   - component: {fileID: 1981135713}
-  - component: {fileID: 1981135716}
   m_Layer: 5
   m_Name: SnowDeco (1)
   m_TagString: Untagged
@@ -3429,10 +3387,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1981135716}
-        m_TargetAssemblyTypeName: TreeObject, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3479,19 +3437,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981135711}
   m_CullTransparentMesh: 1
---- !u!114 &1981135716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981135711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ebc2ed833d59b44c88884b658ec82ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1967374034}
 --- !u!1 &1998259373
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,7 +3707,6 @@ GameObject:
   - component: {fileID: 2072836069}
   - component: {fileID: 2072836068}
   - component: {fileID: 2072836067}
-  - component: {fileID: 2072836070}
   m_Layer: 5
   m_Name: StarDeco
   m_TagString: Untagged
@@ -3833,13 +3777,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2072836070}
-        m_TargetAssemblyTypeName: TreeStar, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 769474070}
+        m_TargetAssemblyTypeName: B_Click, Assembly-CSharp
+        m_MethodName: ToggleOnce
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 158910575}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3883,19 +3827,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072836065}
   m_CullTransparentMesh: 1
---- !u!114 &2072836070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072836065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a890b0515798b4e40a30b77240e01211, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 158910575}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3905,6 +3836,3 @@ SceneRoots:
   - {fileID: 1902642259}
   - {fileID: 1864035694}
   - {fileID: 177922339}
-  - {fileID: 72639669}
-  - {fileID: 473573617}
-  - {fileID: 800791001}
