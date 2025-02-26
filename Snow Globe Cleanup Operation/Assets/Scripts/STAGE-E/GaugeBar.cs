@@ -6,18 +6,17 @@ public class GaugeBar : MonoBehaviour
 {
     public Slider gaugeBar;
     public ParticleSystem[] fireworks;
+    public GameObject successPanel;
 
     int touchCnt;
     int maxGauge;
-    public int playCnt = 5;
-    public float interval = 5f;
 
 
     void Start()
     {
         gaugeBar.value = 0;
         touchCnt = 0;
-        maxGauge = 10;
+        maxGauge = 100;
 
         if (fireworks != null && fireworks.Length > 0)
         {
@@ -54,5 +53,12 @@ public class GaugeBar : MonoBehaviour
                 fireworks[i].Play();
             }
         }
+        StartCoroutine(ShowSuccessPanelAfterDelay());
+    }
+
+    IEnumerator ShowSuccessPanelAfterDelay()
+    {
+        yield return new WaitForSeconds(3f); // 3초 대기
+        successPanel.SetActive(true); // 패널 활성화
     }
 }
