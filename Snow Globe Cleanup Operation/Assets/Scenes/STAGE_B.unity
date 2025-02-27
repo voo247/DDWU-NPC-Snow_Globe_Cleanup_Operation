@@ -2043,7 +2043,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246434549}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1246434551
 Camera:
   m_ObjectHideFlags: 0
@@ -2117,7 +2117,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246434549}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a3e4e2e65ac59c459cc162fe45c6c0e, type: 3}
