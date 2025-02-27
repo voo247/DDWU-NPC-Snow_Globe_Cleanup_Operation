@@ -25,7 +25,7 @@ public class Dust : MonoBehaviour
         RectTransform dustRect = GetComponent<RectTransform>();
         RectTransform handkerchiefRect = obj.GetComponent<RectTransform>();
 
-        return Vector2.Distance(dustRect.anchoredPosition, handkerchiefRect.anchoredPosition) < 300f;
+        return Vector2.Distance(dustRect.anchoredPosition, handkerchiefRect.anchoredPosition) < 250f;
     }
 
     void EraseDust()
