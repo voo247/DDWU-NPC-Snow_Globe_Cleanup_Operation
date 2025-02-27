@@ -5,6 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class B_Click : MonoBehaviour
 {
+    public GameObject Success;
     public GameObject Comb, Star, StarD, Box;
     public GameObject[] SB = new GameObject[2];
     public GameObject[] SBD = new GameObject[6];
@@ -26,6 +27,15 @@ public class B_Click : MonoBehaviour
 
         Tree1.SetActive(true);
         Tree2.SetActive(false);
+
+        Success.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Comb.activeSelf == false && SB[0].activeSelf == false &&
+            SB[1].activeSelf == false && Star.activeSelf == false)
+            Success.SetActive(true);
     }
 
     public void OpenBox(GameObject box)

@@ -1135,7 +1135,7 @@ PrefabInstance:
       objectReference: {fileID: 1246434551}
     - target: {fileID: 4263907937735629827, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6834640007290274266, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
       propertyPath: m_Name
@@ -1244,6 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a18dac384c95674cbd8d377e59a66e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Success: {fileID: 438587821}
   Comb: {fileID: 878738386}
   Star: {fileID: 158910575}
   StarD: {fileID: 2072836065}
@@ -1610,7 +1611,7 @@ MonoBehaviour:
   - {fileID: 843518566}
   - {fileID: 843518566}
   timeSlider: {fileID: 951522362}
-  endTime: 60
+  endTime: 250
   now: 0
   endScene: Ending
 --- !u!114 &951522362
@@ -3515,10 +3516,10 @@ RectTransform:
   - {fileID: 1733690454}
   - {fileID: 1487174047}
   - {fileID: 1367337511}
-  - {fileID: 438587822}
   - {fileID: 769474069}
   - {fileID: 1493663250}
   - {fileID: 843518567}
+  - {fileID: 438587822}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4382,6 +4383,6 @@ SceneRoots:
   - {fileID: 1308813550}
   - {fileID: 1902642259}
   - {fileID: 177922339}
-  - {fileID: 1864035694}
   - {fileID: 1329513278}
+  - {fileID: 1864035694}
   - {fileID: 572932805}

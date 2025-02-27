@@ -381,7 +381,7 @@ MonoBehaviour:
   - {fileID: 903905704}
   - {fileID: 903905704}
   timeSlider: {fileID: 82695063}
-  endTime: 60
+  endTime: 250
   now: 0
   endScene: Ending
 --- !u!114 &82695063

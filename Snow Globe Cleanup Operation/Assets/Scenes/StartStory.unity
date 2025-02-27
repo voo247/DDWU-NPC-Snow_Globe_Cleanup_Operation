@@ -266,6 +266,7 @@ MonoBehaviour:
   fadeSpeed: 3
   fadeOverlay: {fileID: 446615033}
   snowGlobe: {fileID: 554545170}
+  items: {fileID: 0}
   UI_elements:
   - {fileID: 1880577309}
   - {fileID: 1450740558}
@@ -1839,6 +1840,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 704120747}
+    - target: {fileID: 4263907937735629827, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6834640007290274266, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
       propertyPath: m_Name
       value: SettingCanvas

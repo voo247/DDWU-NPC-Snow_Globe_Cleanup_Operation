@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
     public GameObject[] stopObject = new GameObject[2]; // 도움말 및 설정창
     public Slider timeSlider;  // 슬라이더 오브젝트
-    public float endTime = 60.0f; // 제한 시간
+    public float endTime = 250.0f; // 제한 시간
     public float now;  // 현재 남은 시간
     public string endScene; // 게임 오버 씬
     public static Timer Instance { get; private set; }
