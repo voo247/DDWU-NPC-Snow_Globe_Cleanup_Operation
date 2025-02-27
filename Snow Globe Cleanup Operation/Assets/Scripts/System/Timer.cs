@@ -9,11 +9,19 @@ public class Timer : MonoBehaviour
     public float endTime = 60.0f; // 제한 시간
     public float now;  // 현재 남은 시간
     public string endScene; // 게임 오버 씬
+    public static Timer Instance { get; private set; }
 
     private void Awake()
     {
-        // 타이머 객체가 씬 전환 시에도 파괴되지 않도록 설정
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);  // 씬 전환 시 유지
+        }
+        else
+        {
+            Destroy(gameObject);  // 중복 방지
+        }
     }
 
     private void Start()
@@ -24,6 +32,10 @@ public class Timer : MonoBehaviour
         if (PlayerPrefs.HasKey("TimerValue"))
         {
             now = PlayerPrefs.GetFloat("TimerValue");
+        }
+        else
+        {
+            ResetTimer();  // 저장된 값이 없으면 초기화
         }
     }
 
@@ -45,5 +57,13 @@ public class Timer : MonoBehaviour
                 SceneManager.LoadScene("EndingStory_BAD");
             }
         }
+    }
+
+    public void ResetTimer()
+    {
+        now = endTime;  // 타이머를 초기 시간으로 되돌림
+        PlayerPrefs.DeleteKey("TimerValue");  // 저장된 타이머 값 삭제
+        PlayerPrefs.Save();
+        timeSlider.value = 1.0f;  // 슬라이더도 초기 상태로 복원
     }
 }

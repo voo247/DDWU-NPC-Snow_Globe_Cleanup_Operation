@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteKey("STAGEA");
-        PlayerPrefs.DeleteKey("STAGEB");
-        PlayerPrefs.DeleteKey("STAGEC");
-        PlayerPrefs.DeleteKey("STAGED");
-        PlayerPrefs.DeleteKey("STAGEE");
+        //PlayerPrefs.DeleteKey("STAGEA");
+        //PlayerPrefs.DeleteKey("STAGEB");
+        //PlayerPrefs.DeleteKey("STAGEC");
+        //PlayerPrefs.DeleteKey("STAGED");
+        //PlayerPrefs.DeleteKey("STAGEE");
 
         PlayerPrefs.Save();
 
