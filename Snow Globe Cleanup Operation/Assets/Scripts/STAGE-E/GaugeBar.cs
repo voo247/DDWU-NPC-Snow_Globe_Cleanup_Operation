@@ -7,6 +7,10 @@ public class GaugeBar : MonoBehaviour
     public Slider gaugeBar;
     public ParticleSystem[] fireworks;
     public GameObject successPanel;
+    public GameObject snowMan_Before;
+    public GameObject snowMan_After;
+    public GameObject snowManSmile_Before;
+    public GameObject snowManSmile_After;
 
     int touchCnt;
     int maxGauge;
@@ -16,7 +20,18 @@ public class GaugeBar : MonoBehaviour
     {
         gaugeBar.value = 0;
         touchCnt = 0;
-        maxGauge = 100;
+        maxGauge = 70;
+
+        if (PlayerPrefs.GetInt("STAGEC", 0) == 1)
+        {
+            snowMan_Before.SetActive(false);
+            snowMan_After.SetActive(true);
+        }
+        else
+        {
+            snowMan_Before.SetActive(true);
+            snowMan_After.SetActive(false);
+        }
 
         if (fireworks != null && fireworks.Length > 0)
         {
@@ -40,6 +55,16 @@ public class GaugeBar : MonoBehaviour
         else
         {
             Debug.Log("미션 성공!" + touchCnt);
+            if (PlayerPrefs.GetInt("STAGEC", 0) == 1)
+            {
+                snowMan_After.SetActive(false);
+                snowManSmile_After.SetActive(true);
+            }
+            else
+            {
+                snowMan_Before.SetActive(false);
+                snowManSmile_Before.SetActive(true);
+            }
             TriggerFireworks();
         }
     }
