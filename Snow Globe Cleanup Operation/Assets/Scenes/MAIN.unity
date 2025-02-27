@@ -379,7 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopObject:
   - {fileID: 903905704}
-  - {fileID: 903905704}
+  - {fileID: 999549699}
   timeSlider: {fileID: 82695063}
   endTime: 60
   endScene: Ending
@@ -896,6 +896,14 @@ PrefabInstance:
     - target: {fileID: 6834640007290274266, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
       propertyPath: m_Name
       value: SettingCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067055162351640371, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 802
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067055162351640371, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 429
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1703,6 +1711,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &999549699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9191312428165807882, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+  m_PrefabInstance: {fileID: 367368567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1029912677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,7 +3592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 801.99994, y: 429}
+  m_AnchoredPosition: {x: 802, y: 429}
   m_SizeDelta: {x: 132, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989353984
