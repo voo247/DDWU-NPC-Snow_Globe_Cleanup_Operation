@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ChangingClothesManager : MonoBehaviour
 {
+    public GameObject Success;
     public static ChangingClothesManager Instance;
     public List<DraggableClothes> clothesObjects;
 
@@ -40,7 +41,6 @@ public class ChangingClothesManager : MonoBehaviour
 
     public void GameSuccess()
     {
-        // TO-DO
-        // 여기 성공창 띄우고 미니게임 메인으로 돌아가는 부분 필요합니다!
+        Success.SetActive(true);
     }
 }
