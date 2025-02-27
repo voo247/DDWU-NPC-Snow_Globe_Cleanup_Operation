@@ -104,7 +104,7 @@ public class DialogueManager : MonoBehaviour
             yield break;
         }
 
-        Debug.Log($"{currDialogueIdx}:{currContextIdx}");
+        // Debug.Log($"{currDialogueIdx}:{currContextIdx}");
 
         viewManager.skipTransition = false;
 
@@ -218,7 +218,9 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        SceneManager.LoadScene("MAIN");
+        if (parser.csvFile.name.Equals("StartStory"))SceneManager.LoadScene("MAIN");
+        if (parser.csvFile.name.Equals("HappyEnding"))SceneManager.LoadScene("HAPPYENDING");
+        if (parser.csvFile.name.Equals("BadEnding"))SceneManager.LoadScene("BADENDING");
         // nameUI.text = "";
         // contextUI.text = "";
         // StartCoroutine(viewManager.ChangeSprite("", ""));
@@ -239,9 +241,22 @@ public class DialogueManager : MonoBehaviour
             if (!skipTyping) yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(FadeIn(fadeOverlay));
         }
-        else if (eventName.Equals("findSnowGlobe", System.StringComparison.OrdinalIgnoreCase))
+        if (eventName.Equals("fadeOut", System.StringComparison.OrdinalIgnoreCase))
+        {
+            yield return StartCoroutine(FadeOut(fadeOverlay));
+        }
+        if (eventName.Equals("fadeIn", System.StringComparison.OrdinalIgnoreCase))
+        {
+            yield return StartCoroutine(FadeIn(fadeOverlay));
+        }
+        else if (eventName.Equals("findDirtySnowGlobe", System.StringComparison.OrdinalIgnoreCase))
         {
             snowGlobe.sprite = Resources.Load<Sprite>("아이템/스노우볼/더러워진 스노우 볼");
+            yield return StartCoroutine(FadeOut(snowGlobe)); // black overlay 이미지의 alpha값 증가시키는 fadeout함수 활용
+        }
+        else if (eventName.Equals("findBeautifulSnowGlobe", System.StringComparison.OrdinalIgnoreCase))
+        {
+            snowGlobe.sprite = Resources.Load<Sprite>("아이템/스노우볼/깨끗해진 스노우 볼");
             yield return StartCoroutine(FadeOut(snowGlobe)); // black overlay 이미지의 alpha값 증가시키는 fadeout함수 활용
         }
         else if (eventName.Equals("shake", System.StringComparison.OrdinalIgnoreCase))
