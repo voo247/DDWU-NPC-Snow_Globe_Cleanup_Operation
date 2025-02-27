@@ -17,15 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartStory.unity
     guid: 0111bfde805d11b4dac0bb4680b59f56
-  - enabled: 1
-    path: Assets/Scenes/STAGE_D.unity
+  - enabled: 0
+    path: Assets/Scenes/changeClothes.unity
     guid: e5b7944efbb2d4c4a973262ec2a8f070
   - enabled: 1
     path: Assets/Scenes/STAGE_A.unity
     guid: 7d6a45d076226e44aa72dd2cf02ab187
   - enabled: 1
     path: Assets/Scenes/STAGE_D.unity
-    guid: 84aa85605ef599c4380fdfa32365782c
+    guid: 7fa2920f46f981b4a89e28a19c3863fb
   - enabled: 1
     path: Assets/Scenes/MAIN.unity
     guid: 04f2648d5b0ffbd449d4ee1fb9b61800
