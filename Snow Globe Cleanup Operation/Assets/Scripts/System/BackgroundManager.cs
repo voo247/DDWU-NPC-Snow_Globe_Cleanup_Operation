@@ -48,16 +48,16 @@ public class BackgroundManager : MonoBehaviour
             stageC_After.SetActive(false);
         }
 
-        if(PlayerPrefs.GetInt("STAGED", 0) == 1)
-        {
-            stageD_Before.SetActive(false);
-            stageD_After.SetActive(true);
-        }
-        else
-        {
-            stageD_Before.SetActive(true);
-            stageD_After.SetActive(false);
-        }
+        //if(PlayerPrefs.GetInt("STAGED", 0) == 1)
+        //{
+        //    stageD_Before.SetActive(false);
+        //    stageD_After.SetActive(true);
+        //}
+        //else
+        //{
+        //    stageD_Before.SetActive(true);
+        //    stageD_After.SetActive(false);
+        //}
 
         if(PlayerPrefs.GetInt("STAGEE", 0) == 1)
         {
