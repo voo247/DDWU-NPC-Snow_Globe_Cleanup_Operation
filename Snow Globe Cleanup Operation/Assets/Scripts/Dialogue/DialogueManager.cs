@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 // TODO
 // 1. 텍스트 애니메이션 -> 엔터/스페이스바 동작 관련 코드 추가 필요 (애니메이션 진행 상태별로 애니메이션 종료/다음대사의 기능)
@@ -14,6 +15,7 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] float fadeSpeed;
     [SerializeField] Image fadeOverlay;
+    [SerializeField] Image snowGlobe;
     [SerializeField] public RectTransform[] UI_elements;
     [SerializeField] private TMP_Text nameUI;
     [SerializeField] private TMP_Text contextUI;
@@ -91,27 +93,20 @@ public class DialogueManager : MonoBehaviour
 
         currDialogueIdx = 0;
         currContextIdx = 0;
-        DisplayDialogue();
+        StartCoroutine(DisplayDialogue());
     }
 
-    private void DisplayDialogue()
+    private IEnumerator DisplayDialogue()
     {
-        if (currDialogueIdx >= dialogueList.Length)
+        if (!(currDialogueIdx < dialogueList.Length && currContextIdx < dialogueList[currDialogueIdx].context.Length))
         {
             EndDialogue();
-            return;
+            yield break;
         }
 
         viewManager.skipTransition = false;
 
         Dialogue currDialogue = dialogueList[currDialogueIdx];
-
-        // 접두사로 "S_"(start)가 붙은 화면 이벤트 처리
-        if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
-            currDialogue.eventName[currContextIdx].StartsWith("S_"))
-        {
-            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx].Substring(2)));
-        }
 
         if (!currDialogue.name.StartsWith("#"))
         {
@@ -141,6 +136,14 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(viewManager.ChangeBackground(
             currDialogue.backgroundName[currContextIdx]
         ));
+
+        // 접두사로 "S_"(start)가 붙은 화면 이벤트 처리
+        if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
+            currDialogue.eventName[currContextIdx].StartsWith("S_"))
+        {
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx].Substring(2)));
+        }
     }
 
     private IEnumerator TypeSentence(string sentence)
@@ -187,11 +190,6 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator DisplayNextSentence()
     {
         soundEffectManager.StopGeneralSound();
-        if (currDialogueIdx >= dialogueList.Length)
-        {
-            EndDialogue();
-            yield break;
-        }
 
         Dialogue currDialogue = dialogueList[currDialogueIdx];
 
@@ -200,7 +198,7 @@ public class DialogueManager : MonoBehaviour
             currDialogue.eventName[currContextIdx].StartsWith("E_"))
         {
             StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx].Substring(2)));
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
         }
 
         if (currContextIdx < currDialogue.context.Length - 1)
@@ -213,22 +211,15 @@ public class DialogueManager : MonoBehaviour
             currContextIdx = 0;
         }
 
-        if (currDialogueIdx < dialogueList.Length)
-        {
-            DisplayDialogue();
-        }
-        else
-        {
-            EndDialogue();
-        }
+        StartCoroutine(DisplayDialogue());
     }
 
     private void EndDialogue()
     {
-        nameUI.text = "";
-        contextUI.text = "";
-        StartCoroutine(viewManager.ChangeSprite("", ""));
         SceneManager.LoadScene("Game");
+        // nameUI.text = "";
+        // contextUI.text = "";
+        // StartCoroutine(viewManager.ChangeSprite("", ""));
     }
 
     public IEnumerator PlayDialogueEffects(string eventName)
@@ -237,11 +228,19 @@ public class DialogueManager : MonoBehaviour
         {
             if (skipTyping)
             {
+                if(snowGlobe != null) snowGlobe.enabled = false;
                 yield break;
             }
+            if(snowGlobe != null) yield return StartCoroutine(ScreenShake(new RectTransform[] { snowGlobe.rectTransform }));
             yield return StartCoroutine(FadeOut(fadeOverlay));
+            if(snowGlobe != null) snowGlobe.enabled = false;
             if (!skipTyping) yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(FadeIn(fadeOverlay));
+        }
+        else if (eventName.Equals("findSnowGlobe", System.StringComparison.OrdinalIgnoreCase))
+        {
+            snowGlobe.sprite = Resources.Load<Sprite>("아이템/스노우볼/더러워진 스노우 볼");
+            yield return StartCoroutine(FadeOut(snowGlobe)); // black overlay 이미지의 alpha값 증가시키는 fadeout함수 활용
         }
         else if (eventName.Equals("shake", System.StringComparison.OrdinalIgnoreCase))
         {

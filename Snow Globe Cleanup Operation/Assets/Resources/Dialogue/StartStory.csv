@@ -1,6 +1,6 @@
 ID,Character Name,Context,Sprite Name,Sound Effect,Event,Background,Comment
 1,#나레이션,(우당탕!),,throw_object-97796,,아저씨배경대사-배경,사운드 추가
-2,아저씨,아이고! 이게 뭐람,슬픈 표정,tool-box-sounds-1-101169,,,(물건 찾는 소리와 함께 스노우볼 등장)
+2,아저씨,아이고! 이게 뭐람,슬픈 표정,tool-box-sounds-1-101169,S_findSnowGlobe,,(물건 찾는 소리와 함께 스노우볼 등장)
 3,,"아, 참... 이런 게 있었지?",기본 표정,,,,
 4,,… … 흠…,기본 표정,,,,
 5,,이번 겨울에도 안 팔리면 치워 버려야겠네,슬픈 표정,,E_fade,,스노우볼이 흔들리고나서 검은화면 후 배경 전환 
