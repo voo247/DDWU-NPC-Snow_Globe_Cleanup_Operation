@@ -5,6 +5,6 @@ public class startStoryScene : MonoBehaviour
 {
     public void StartStoryScene()
     {
-        SceneManager.LoadScene("StoryScene");
+        SceneManager.LoadScene("StartStory");
     }
 }
