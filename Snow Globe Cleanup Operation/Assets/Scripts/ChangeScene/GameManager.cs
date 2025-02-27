@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (PlayerPrefs.GetInt("STAGEA", 0) == 1 && PlayerPrefs.GetInt("STAGEB", 0) == 1 && PlayerPrefs.GetInt("STAGEC", 0) == 1 && PlayerPrefs.GetInt("STAGED", 0) == 1 && PlayerPrefs.GetInt("STAGEE", 0) == 1 && PlayerPrefs.GetInt("STAGEE", 0) == 1 && gameTimer.now > 0)
+        {
+            Timer.Instance?.ResetTimer();
             SceneManager.LoadScene("EndingStory_HAPPY");
+        }
     }
 
     public void LoadMiniGameA()

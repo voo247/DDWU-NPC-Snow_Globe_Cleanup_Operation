@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    public GameObject[] stopObject = new GameObject[2]; // µµ¿ò¸» ¹× ¼³Á¤Ã¢
-    public Slider timeSlider;  // ½½¶óÀÌ´õ ¿ÀºêÁ§Æ®
-    public float endTime = 250.0f; // Á¦ÇÑ ½Ã°£
-    public float now;  // ÇöÀç ³²Àº ½Ã°£
-    public string endScene; // °ÔÀÓ ¿À¹ö ¾À
+    public GameObject[] stopObject = new GameObject[2]; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¢
+    public Slider timeSlider;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    public float endTime = 250.0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public float now;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public string endScene; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     public static Timer Instance { get; private set; }
 
     private void Awake()
@@ -16,11 +16,11 @@ public class Timer : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // ¾À ÀüÈ¯ ½Ã À¯Áö
+            DontDestroyOnLoad(gameObject);  // ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
         else
         {
-            Destroy(gameObject);  // Áßº¹ ¹æÁö
+            Destroy(gameObject);  // ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½
         }
     }
 
@@ -28,14 +28,14 @@ public class Timer : MonoBehaviour
     {
         now = endTime;
 
-        // ÀÌ¹Ì ÀúÀåµÈ Å¸ÀÌ¸Ó °ªÀÌ ÀÖÀ¸¸é º¹¿ø
+        // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (PlayerPrefs.HasKey("TimerValue"))
         {
             now = PlayerPrefs.GetFloat("TimerValue");
         }
         else
         {
-            ResetTimer();  // ÀúÀåµÈ °ªÀÌ ¾øÀ¸¸é ÃÊ±âÈ­
+            ResetTimer();  // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         }
     }
 
@@ -48,12 +48,13 @@ public class Timer : MonoBehaviour
                 now -= Time.deltaTime;
                 timeSlider.value = now / endTime;
 
-                // Å¸ÀÌ¸Ó °ª ÀúÀå
+                // Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 PlayerPrefs.SetFloat("TimerValue", now);
                 PlayerPrefs.Save();
             }
             else
             {
+                Timer.Instance?.ResetTimer();
                 SceneManager.LoadScene("EndingStory_BAD");
             }
         }
@@ -61,9 +62,9 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
-        now = endTime;  // Å¸ÀÌ¸Ó¸¦ ÃÊ±â ½Ã°£À¸·Î µÇµ¹¸²
-        PlayerPrefs.DeleteKey("TimerValue");  // ÀúÀåµÈ Å¸ÀÌ¸Ó °ª »èÁ¦
+        now = endTime;  // Å¸ï¿½Ì¸Ó¸ï¿½ ï¿½Ê±ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½
+        PlayerPrefs.DeleteKey("TimerValue");  // ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         PlayerPrefs.Save();
-        timeSlider.value = 1.0f;  // ½½¶óÀÌ´õµµ ÃÊ±â »óÅÂ·Î º¹¿ø
+        timeSlider.value = 1.0f;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
