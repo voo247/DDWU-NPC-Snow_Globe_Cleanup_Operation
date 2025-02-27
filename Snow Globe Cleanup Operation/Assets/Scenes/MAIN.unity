@@ -3087,7 +3087,7 @@ MonoBehaviour:
   tree: {fileID: 1488979767}
   snow: {fileID: 382581723}
   stain: {fileID: 2112828468}
-  timer: {fileID: 0}
+  timer: {fileID: 82695062}
 --- !u!114 &1687553398
 MonoBehaviour:
   m_ObjectHideFlags: 0

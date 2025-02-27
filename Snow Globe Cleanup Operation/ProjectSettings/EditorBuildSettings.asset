@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartStory.unity
     guid: 0111bfde805d11b4dac0bb4680b59f56
   - enabled: 1
-    path: Assets/Scenes/changeClothes.unity
+    path: Assets/Scenes/STAGE_D.unity
     guid: e5b7944efbb2d4c4a973262ec2a8f070
   - enabled: 1
     path: Assets/Scenes/STAGE_A.unity
@@ -44,5 +44,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/STAGE_C.unity
     guid: 6b474a6ca40f9df458fad4b711425d37
+  - enabled: 1
+    path: Assets/Scenes/EndingStory_BAD.unity
+    guid: 4884cc3c7bb6686458d66c3ee82f8ebf
+  - enabled: 1
+    path: Assets/Scenes/EndingStory_HAPPY.unity
+    guid: 4dcbc37d8ea468b42837bbf3fc1897f6
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
