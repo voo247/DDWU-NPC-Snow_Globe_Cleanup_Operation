@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    public GameObject[] stopObject = new GameObject[2]; // ���� �� ����â
-    public Slider timeSlider;  // �����̴� ������Ʈ
-    public float endTime = 250.0f; // ���� �ð�
-    public float now;  // ���� ���� �ð�
-    public string endScene; // ���� ���� ��
+    public GameObject[] stopObject = new GameObject[2];
+    public Slider timeSlider;
+    public float endTime = 100.0f;
+    public float now;
+    public string endScene;
     public static Timer Instance { get; private set; }
 
     private void Awake()
@@ -16,11 +16,11 @@ public class Timer : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // �� ��ȯ �� ����
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);  // �ߺ� ����
+            Destroy(gameObject);
         }
     }
 
@@ -28,14 +28,13 @@ public class Timer : MonoBehaviour
     {
         now = endTime;
 
-        // �̹� ����� Ÿ�̸� ���� ������ ����
         if (PlayerPrefs.HasKey("TimerValue"))
         {
             now = PlayerPrefs.GetFloat("TimerValue");
         }
         else
         {
-            ResetTimer();  // ����� ���� ������ �ʱ�ȭ
+            ResetTimer();
         }
     }
 
@@ -48,7 +47,6 @@ public class Timer : MonoBehaviour
                 now -= Time.deltaTime;
                 timeSlider.value = now / endTime;
 
-                // Ÿ�̸� �� ����
                 PlayerPrefs.SetFloat("TimerValue", now);
                 PlayerPrefs.Save();
             }
@@ -62,9 +60,9 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
-        now = endTime;  // Ÿ�̸Ӹ� �ʱ� �ð����� �ǵ���
-        PlayerPrefs.DeleteKey("TimerValue");  // ����� Ÿ�̸� �� ����
+        now = endTime;
+        PlayerPrefs.DeleteKey("TimerValue");
         PlayerPrefs.Save();
-        timeSlider.value = 1.0f;  // �����̴��� �ʱ� ���·� ����
+        timeSlider.value = 1.0f;
     }
 }
