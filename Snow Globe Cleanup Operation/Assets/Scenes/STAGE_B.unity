@@ -442,7 +442,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 567135927750843655, guid: 15c18b9e3f8672741a4fd72c83845ec5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1182,11 +1182,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 800791001}
   - {fileID: 1135350317}
   - {fileID: 878738387}
   - {fileID: 1967374035}
   - {fileID: 158910576}
+  - {fileID: 800791001}
   m_Father: {fileID: 769474069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1320,7 +1320,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1488058646451916235, guid: e94e71734644e184aa58e509f6ef9a7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3514,11 +3514,11 @@ RectTransform:
   - {fileID: 951522360}
   - {fileID: 1733690454}
   - {fileID: 1487174047}
-  - {fileID: 843518567}
   - {fileID: 1367337511}
   - {fileID: 438587822}
   - {fileID: 769474069}
   - {fileID: 1493663250}
+  - {fileID: 843518567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4381,7 +4381,7 @@ SceneRoots:
   - {fileID: 1246434552}
   - {fileID: 1308813550}
   - {fileID: 1902642259}
-  - {fileID: 1864035694}
   - {fileID: 177922339}
+  - {fileID: 1864035694}
   - {fileID: 1329513278}
   - {fileID: 572932805}
