@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 // TODO
 // 1. 텍스트 애니메이션 -> 엔터/스페이스바 동작 관련 코드 추가 필요 (애니메이션 진행 상태별로 애니메이션 종료/다음대사의 기능)
@@ -14,12 +15,14 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] float fadeSpeed;
     [SerializeField] Image fadeOverlay;
+    [SerializeField] Image snowGlobe;
     [SerializeField] public RectTransform[] UI_elements;
     [SerializeField] private TMP_Text nameUI;
     [SerializeField] private TMP_Text contextUI;
     [SerializeField] private Button nextButton;
     [SerializeField] private DialogueParser parser;
     [SerializeField] private ViewManager viewManager;
+    [SerializeField] private SoundEffectManager soundEffectManager;
 
     private Dialogue[] dialogueList;
     private int currDialogueIdx;
@@ -36,9 +39,7 @@ public class DialogueManager : MonoBehaviour
             {
                 if (isTyping)
                 {
-                    skipTyping = true;
-                    isTyping = false;
-                    viewManager.skipTransition = true;
+                    callSkip();
                 }
                 else
                 {
@@ -46,7 +47,7 @@ public class DialogueManager : MonoBehaviour
                 }
             });
         }
-
+        
         StartDialogue();
     }
 
@@ -57,21 +58,28 @@ public class DialogueManager : MonoBehaviour
             skipTyping = true;
             isTyping = false;
             viewManager.skipTransition = true;
+            soundEffectManager.StopGeneralSound();
             EndDialogue();
         }
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isTyping)
             {
-                skipTyping = true;
-                isTyping = false;
-                viewManager.skipTransition = true;
+                callSkip();
             }
             else
             {
                 StartCoroutine(DisplayNextSentence());
             }
         }
+    }
+
+    private void callSkip()
+    {
+        skipTyping = true;
+        isTyping = false;
+        viewManager.skipTransition = true;
+        soundEffectManager.StopGeneralSound();
     }
 
     public void StartDialogue()
@@ -85,31 +93,26 @@ public class DialogueManager : MonoBehaviour
 
         currDialogueIdx = 0;
         currContextIdx = 0;
-        DisplayDialogue();
+        StartCoroutine(DisplayDialogue());
     }
 
-    private void DisplayDialogue()
+    private IEnumerator DisplayDialogue()
     {
-        if (currDialogueIdx >= dialogueList.Length)
+        if (!(currDialogueIdx < dialogueList.Length && currContextIdx < dialogueList[currDialogueIdx].context.Length))
         {
             EndDialogue();
-            return;
+            yield break;
         }
+
+        Debug.Log($"{currDialogueIdx}:{currContextIdx}");
 
         viewManager.skipTransition = false;
 
         Dialogue currDialogue = dialogueList[currDialogueIdx];
 
-        // 접두사로 "S_"(start)가 붙은 화면 이벤트 처리
-        if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
-            currDialogue.eventName[currContextIdx].StartsWith("S_"))
-        {
-            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx].Substring(2)));
-        }
-
         if (!currDialogue.name.StartsWith("#"))
         {
-            nameUI.text = currDialogue.name;
+            nameUI.text = "_ " + currDialogue.name;
         }
         else
         {
@@ -119,39 +122,39 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(currDialogue.context[currContextIdx]));
 
         // 효과음 재생
-        
         if (!skipTyping)
         {
             if (!string.IsNullOrEmpty(currDialogue.soundName[currContextIdx]))
             {
-                AudioClip clip = Resources.Load<AudioClip>("Sounds/Dialogue/" + currDialogue.soundName[currContextIdx]);
-                if (clip != null)
-                {
-                    AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
-                }
-                else
-                {
-                    Debug.LogWarning("DialogueManager: 사운드 클립을 찾을 수 없음 (" + currDialogue.soundName[currContextIdx] + ")");
-                }
+                soundEffectManager.PlayGeneralSound(currDialogue.soundName[currContextIdx]);
             }
         }
 
         // 이미지 변경
-        StartCoroutine(viewManager.SpriteChangeCoroutine(
+        StartCoroutine(viewManager.ChangeSprite(
             currDialogue.name, 
             currDialogue.spriteName[currContextIdx]
         ));
-        StartCoroutine(viewManager.BackgroundChangeCoroutine(
+        StartCoroutine(viewManager.ChangeBackground(
             currDialogue.backgroundName[currContextIdx]
         ));
+
+        // 접두사로 "S_"(start)가 붙은 화면 이벤트 처리
+        if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
+            currDialogue.eventName[currContextIdx].StartsWith("S_"))
+        {
+            if (currDialogue.eventName[currContextIdx].Equals("S_shake", System.StringComparison.OrdinalIgnoreCase)) yield return new WaitForSeconds(0.1f);
+            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx][2..]));
+        }
     }
 
     private IEnumerator TypeSentence(string sentence)
     {
+        contextUI.text = "";
         isTyping = true;
         skipTyping = false;
-        contextUI.text = "";
-        
+        soundEffectManager.PlayTypingSound("whatsapp-typing-and-sending-message-sound-effect-204192");
+
         // 단어별 애니메이션
         string[] words = sentence.Split(' ');
         foreach (string word in words)
@@ -161,10 +164,11 @@ public class DialogueManager : MonoBehaviour
                 contextUI.text = sentence;
                 isTyping = false;
                 skipTyping = false;
+                soundEffectManager.StopTypingSound();
                 yield break;
             }
             contextUI.text += word + " ";
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         // // 문자별 애니메이션 -> TMP tag 사용위해서 단어별 애니메이션으로 대체하였음
@@ -182,15 +186,12 @@ public class DialogueManager : MonoBehaviour
         // }
 
         isTyping = false;
+        soundEffectManager.StopTypingSound();
     }
 
     public IEnumerator DisplayNextSentence()
     {
-        if (currDialogueIdx >= dialogueList.Length)
-        {
-            EndDialogue();
-            yield break;
-        }
+        soundEffectManager.StopGeneralSound();
 
         Dialogue currDialogue = dialogueList[currDialogueIdx];
 
@@ -198,8 +199,8 @@ public class DialogueManager : MonoBehaviour
         if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
             currDialogue.eventName[currContextIdx].StartsWith("E_"))
         {
-            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx].Substring(2)));
-            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx][2..]));
+            yield return new WaitForSeconds(1f);
         }
 
         if (currContextIdx < currDialogue.context.Length - 1)
@@ -212,22 +213,15 @@ public class DialogueManager : MonoBehaviour
             currContextIdx = 0;
         }
 
-        if (currDialogueIdx < dialogueList.Length)
-        {
-            DisplayDialogue();
-        }
-        else
-        {
-            EndDialogue();
-        }
+        StartCoroutine(DisplayDialogue());
     }
 
     private void EndDialogue()
     {
-        nameUI.text = "";
-        contextUI.text = "";
-        StartCoroutine(viewManager.SpriteChangeCoroutine("", ""));
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("MAIN");
+        // nameUI.text = "";
+        // contextUI.text = "";
+        // StartCoroutine(viewManager.ChangeSprite("", ""));
     }
 
     public IEnumerator PlayDialogueEffects(string eventName)
@@ -236,11 +230,19 @@ public class DialogueManager : MonoBehaviour
         {
             if (skipTyping)
             {
+                if(snowGlobe != null) snowGlobe.enabled = false;
                 yield break;
             }
+            if(snowGlobe != null) yield return StartCoroutine(ScreenShake(new RectTransform[] { snowGlobe.rectTransform }));
             yield return StartCoroutine(FadeOut(fadeOverlay));
+            if(snowGlobe != null) snowGlobe.enabled = false;
             if (!skipTyping) yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(FadeIn(fadeOverlay));
+        }
+        else if (eventName.Equals("findSnowGlobe", System.StringComparison.OrdinalIgnoreCase))
+        {
+            snowGlobe.sprite = Resources.Load<Sprite>("아이템/스노우볼/더러워진 스노우 볼");
+            yield return StartCoroutine(FadeOut(snowGlobe)); // black overlay 이미지의 alpha값 증가시키는 fadeout함수 활용
         }
         else if (eventName.Equals("shake", System.StringComparison.OrdinalIgnoreCase))
         {
@@ -294,9 +296,9 @@ public class DialogueManager : MonoBehaviour
             originalPositions[i] = UI_elements[i].anchoredPosition;
         }
 
-        float duration = 1f;
+        float duration = 0.7f;
         float elapsed = 0f;
-        float magnitude = 10f;
+        float magnitude = 5f;
 
         // UI 오브젝트 흔들기
         while (elapsed < duration)
@@ -307,8 +309,10 @@ public class DialogueManager : MonoBehaviour
             }
             for (int i = 0; i < UI_elements.Length; i++)
             {
-                float offsetX = Random.Range(-1f, 1f) * (magnitude - elapsed * 2);
-                float offsetY = Random.Range(-1f, 1f) * (magnitude - elapsed * 2);
+                float weight = magnitude - elapsed * 5f; // 점차 약하게 흔들기
+                weight = (weight > 0)? weight : -weight;
+                float offsetX = Random.Range(-1f, 1f) * weight;
+                float offsetY = Random.Range(-1f, 1f) * weight;
                 UI_elements[i].anchoredPosition = originalPositions[i] + new Vector2(offsetX, offsetY);
             }
             elapsed += Time.deltaTime;

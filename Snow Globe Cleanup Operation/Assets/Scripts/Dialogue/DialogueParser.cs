@@ -19,7 +19,7 @@ public class DialogueParser : MonoBehaviour
         string[] data = csvFile.text.Split(new char[]{'\n'});
 
         // data[0] = CSV 데이터의 첫 줄
-        for (int i = 1; i < data.Length - 1;)
+        for (int i = 1; i < data.Length;)
         {
             string[] row = ParseCSVLine(data[i]);
             
@@ -40,7 +40,7 @@ public class DialogueParser : MonoBehaviour
                 eventList.Add(row[5].Trim());
                 backgroundList.Add(row[6].Trim());
 
-                if (++i >= data.Length - 1)
+                if (!(++i < data.Length))
                 {
                     break;
                 }

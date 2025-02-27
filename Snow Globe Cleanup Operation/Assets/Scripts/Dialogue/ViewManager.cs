@@ -10,7 +10,7 @@ public class ViewManager : MonoBehaviour
     [HideInInspector] public string currSpriteCharater = "";
     [HideInInspector] public bool skipTransition = false;
     
-    public IEnumerator SpriteChangeCoroutine(string name, string newSpriteName)
+    public IEnumerator ChangeSprite(string name, string newSpriteName)
     {
         if (string.IsNullOrEmpty(newSpriteName))
         {
@@ -30,21 +30,23 @@ public class ViewManager : MonoBehaviour
             yield break;
         }
 
-        if (currSpriteCharater != name)
+        bool isSameCharacter = currSpriteCharater == name;
+
+        if (!isSameCharacter)
         {
             yield return StartCoroutine(FadeOut(currSprite));
         }
 
         currSprite.sprite = newSprite;
+        currSpriteCharater = name;
 
-        if (currSpriteCharater != name)
+        if (!isSameCharacter)
         {
             yield return StartCoroutine(FadeIn(currSprite));
         }
-        currSpriteCharater = name;
     }
     
-    public IEnumerator BackgroundChangeCoroutine(string newBackgroundName)
+    public IEnumerator ChangeBackground(string newBackgroundName)
     {
         if (string.IsNullOrEmpty(newBackgroundName))
         {

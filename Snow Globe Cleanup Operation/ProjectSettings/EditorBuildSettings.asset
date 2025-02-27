@@ -8,20 +8,41 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Ending.unity
-    guid: e22711be693675b4680d9358ce3eac54
+  - enabled: 1
+    path: Assets/Scenes/StartStory.unity
+    guid: 0111bfde805d11b4dac0bb4680b59f56
   - enabled: 1
     path: Assets/Scenes/Timer.unity
     guid: d65ab95529676384c9cb2bf3980faa3b
   - enabled: 1
+    path: Assets/Scenes/StartStory.unity
+    guid: 0111bfde805d11b4dac0bb4680b59f56
+  - enabled: 1
+    path: Assets/Scenes/changeClothes.unity
+    guid: e5b7944efbb2d4c4a973262ec2a8f070
+  - enabled: 1
     path: Assets/Scenes/STAGE_A.unity
     guid: 7d6a45d076226e44aa72dd2cf02ab187
+  - enabled: 1
+    path: Assets/Scenes/STAGE_D.unity
+    guid: 84aa85605ef599c4380fdfa32365782c
   - enabled: 1
     path: Assets/Scenes/MAIN.unity
     guid: 04f2648d5b0ffbd449d4ee1fb9b61800
   - enabled: 1
     path: Assets/Scenes/STAGE_E.unity
     guid: 599280ef017452f40bd7265a66f48a23
+  - enabled: 1
+    path: Assets/Scenes/BADENDING.unity
+    guid: 37c85ac67e5d6a24b91ff9cb2e416fad
+  - enabled: 1
+    path: Assets/Scenes/HAPPYENDING.unity
+    guid: c7dd3247b014c524c8d3c31127be0968
+  - enabled: 1
+    path: Assets/Scenes/STAGE_B.unity
+    guid: e5b921c265986d244b9edad55fc5ffc8
+  - enabled: 1
+    path: Assets/Scenes/STAGE_C.unity
+    guid: 6b474a6ca40f9df458fad4b711425d37
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
