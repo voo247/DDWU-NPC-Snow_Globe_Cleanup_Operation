@@ -215,7 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139683316}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Deco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 158910579}
   - component: {fileID: 158910578}
   - component: {fileID: 158910577}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 363535635}
   - component: {fileID: 363535634}
   - component: {fileID: 363535633}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SnowDeco (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 508155448}
   - component: {fileID: 508155447}
   - component: {fileID: 508155446}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BallDeco (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,7 +1163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 701341836}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769474069}
   - component: {fileID: 769474070}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,7 +1320,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1488058646451916235, guid: e94e71734644e184aa58e509f6ef9a7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1435,7 +1435,7 @@ GameObject:
   - component: {fileID: 878738390}
   - component: {fileID: 878738389}
   - component: {fileID: 878738388}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Comb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,8 +1607,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopObject:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 843518566}
+  - {fileID: 843518566}
   timeSlider: {fileID: 951522362}
   endTime: 60
   now: 0
@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 954830297}
   - component: {fileID: 954830296}
   - component: {fileID: 954830295}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SnowDeco (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 1135350320}
   - component: {fileID: 1135350319}
   - component: {fileID: 1135350318}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2267,7 +2267,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: f89532e9677b1364abb27bb380a411a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2544,7 +2544,7 @@ GameObject:
   - component: {fileID: 1405612955}
   - component: {fileID: 1405612954}
   - component: {fileID: 1405612953}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BallDeco (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3005,7 +3005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ccd84f373bc4744874bcd21f5a2acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 843518566}
 --- !u!114 &1733690456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3100,7 +3100,7 @@ GameObject:
   - component: {fileID: 1782212999}
   - component: {fileID: 1782212998}
   - component: {fileID: 1782212997}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BallDeco (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3497,7 +3497,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1864035694
 RectTransform:
@@ -3539,7 +3539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUp: {fileID: 843518566}
-  popUpButton: {fileID: 0}
+  popUpButton: {fileID: 1733690456}
   continueButton: {fileID: 1846476372}
 --- !u!1 &1902642256
 GameObject:
@@ -3696,7 +3696,7 @@ GameObject:
   - component: {fileID: 1967374038}
   - component: {fileID: 1967374037}
   - component: {fileID: 1967374036}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3828,7 +3828,7 @@ GameObject:
   - component: {fileID: 1981135715}
   - component: {fileID: 1981135714}
   - component: {fileID: 1981135713}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SnowDeco (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4218,7 +4218,7 @@ GameObject:
   - component: {fileID: 2072836069}
   - component: {fileID: 2072836068}
   - component: {fileID: 2072836067}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: StarDeco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
