@@ -379,9 +379,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopObject:
   - {fileID: 903905704}
-  - {fileID: 999549699}
+  - {fileID: 903905704}
   timeSlider: {fileID: 82695063}
   endTime: 60
+  now: 0
   endScene: Ending
 --- !u!114 &82695063
 MonoBehaviour:
@@ -1711,11 +1712,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &999549699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9191312428165807882, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
-  m_PrefabInstance: {fileID: 367368567}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1029912677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,6 +3087,7 @@ MonoBehaviour:
   tree: {fileID: 1488979767}
   snow: {fileID: 382581723}
   stain: {fileID: 2112828468}
+  timer: {fileID: 0}
 --- !u!114 &1687553398
 MonoBehaviour:
   m_ObjectHideFlags: 0

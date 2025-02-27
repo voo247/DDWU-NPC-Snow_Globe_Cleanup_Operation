@@ -35314,9 +35314,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopObject:
   - {fileID: 77413949}
-  - {fileID: 858152846}
+  - {fileID: 77413949}
   timeSlider: {fileID: 849728914}
   endTime: 60
+  now: 0
   endScene: Ending
 --- !u!114 &849728914
 MonoBehaviour:
@@ -35490,11 +35491,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
---- !u!1 &858152846 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9191312428165807882, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
-  m_PrefabInstance: {fileID: 858152845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901289955
 GameObject:
   m_ObjectHideFlags: 0
