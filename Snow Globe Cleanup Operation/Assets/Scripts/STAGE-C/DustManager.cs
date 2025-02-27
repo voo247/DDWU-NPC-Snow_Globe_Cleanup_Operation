@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 
 public class DustManager : MonoBehaviour
 {
+    public GameObject Success;
     public GameObject[] dust = new GameObject[3];
     int[] count = { 1, 1, 1 };
 
@@ -21,7 +22,7 @@ public class DustManager : MonoBehaviour
             count[0]--;
             count[1]--;
             count[2]--;
-            Debug.Log("끝");
+            Success.SetActive(true);
         }
     }
 }
