@@ -224,7 +224,6 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         if (parser.csvFile.name.Equals("StartStory")) {
-            Timer.Instance?.ResetTimer();
             PlayerPrefs.DeleteKey("STAGEA");
             PlayerPrefs.DeleteKey("STAGEB");
             PlayerPrefs.DeleteKey("STAGEC");
