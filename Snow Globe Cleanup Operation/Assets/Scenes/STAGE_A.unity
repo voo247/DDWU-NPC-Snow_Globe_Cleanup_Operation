@@ -6075,11 +6075,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9067055162351640371, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 802
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067055162351640371, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 429
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+--- !u!1 &1245801514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9191312428165807882, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+  m_PrefabInstance: {fileID: 1245801513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1246434549
 GameObject:
   m_ObjectHideFlags: 0
@@ -10448,7 +10461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopObject:
   - {fileID: 843518566}
-  - {fileID: 843518566}
+  - {fileID: 1245801514}
   timeSlider: {fileID: 2106059931}
   endTime: 60
   endScene: Ending
