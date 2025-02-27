@@ -104,6 +104,8 @@ public class DialogueManager : MonoBehaviour
             yield break;
         }
 
+        Debug.Log($"{currDialogueIdx}:{currContextIdx}");
+
         viewManager.skipTransition = false;
 
         Dialogue currDialogue = dialogueList[currDialogueIdx];
@@ -141,8 +143,8 @@ public class DialogueManager : MonoBehaviour
         if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
             currDialogue.eventName[currContextIdx].StartsWith("S_"))
         {
-            yield return new WaitForSeconds(1f);
-            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx].Substring(2)));
+            if (currDialogue.eventName[currContextIdx].Equals("S_shake", System.StringComparison.OrdinalIgnoreCase)) yield return new WaitForSeconds(0.1f);
+            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx][2..]));
         }
     }
 
@@ -197,7 +199,7 @@ public class DialogueManager : MonoBehaviour
         if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
             currDialogue.eventName[currContextIdx].StartsWith("E_"))
         {
-            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx].Substring(2)));
+            StartCoroutine(PlayDialogueEffects(currDialogue.eventName[currContextIdx][2..]));
             yield return new WaitForSeconds(1f);
         }
 
@@ -216,7 +218,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("MAIN");
         // nameUI.text = "";
         // contextUI.text = "";
         // StartCoroutine(viewManager.ChangeSprite("", ""));
