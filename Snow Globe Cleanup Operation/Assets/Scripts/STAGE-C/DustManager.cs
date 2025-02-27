@@ -22,5 +22,10 @@ public class DustManager : MonoBehaviour
                 if (dust[i] != null) count++;
                 else count--;
         }
+        else if (count == 0)
+        {
+            Debug.Log("끝");
+            count--;
+        }
     }
 }
