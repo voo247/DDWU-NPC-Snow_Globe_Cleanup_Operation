@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] float fadeSpeed;
     [SerializeField] Image fadeOverlay;
     [SerializeField] Image snowGlobe;
+    [SerializeField] GameObject items;
     [SerializeField] public RectTransform[] UI_elements;
     [SerializeField] private TMP_Text nameUI;
     [SerializeField] private TMP_Text contextUI;
@@ -138,6 +139,10 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(viewManager.ChangeBackground(
             currDialogue.backgroundName[currContextIdx]
         ));
+        if (parser.csvFile.name.Equals("BadEnding") && currDialogue.backgroundName[currContextIdx].Equals("아저씨배경대사-배경"))
+        {
+            items.SetActive(false);
+        }
 
         // 접두사로 "S_"(start)가 붙은 화면 이벤트 처리
         if (!string.IsNullOrEmpty(currDialogue.eventName[currContextIdx]) &&
