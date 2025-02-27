@@ -1,32 +1,44 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Dust : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    private Color dustColor;
-    private float eraseSpeed = 0.05f; // 문지를 때 줄어드는 알파 값
+    Image img;
+    public GameObject tnrjs;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        dustColor = spriteRenderer.color; // 원래 색상 저장
+        img = GetComponent<Image>();
     }
 
-    void OnMouseDrag() // 마우스 드래그 중이면 실행
+    void Update()
     {
-        EraseDust();
+        if (tnrjs != null && IsTouching(tnrjs))
+        {
+            EraseDust();
+        }
     }
 
+    bool IsTouching(GameObject obj)
+    {
+        RectTransform dustRect = GetComponent<RectTransform>();
+        RectTransform handkerchiefRect = obj.GetComponent<RectTransform>();
+
+        return Vector2.Distance(dustRect.anchoredPosition, handkerchiefRect.anchoredPosition) < 200f;
+    }
 
     void EraseDust()
     {
-        dustColor.a -= eraseSpeed; // 알파 값 줄이기
-        spriteRenderer.color = dustColor;
-
-        if (dustColor.a <= 0f)
+        if (img.color.a > 0.1f)
         {
-            Destroy(gameObject); // 먼지가 완전히 사라지면 삭제
-            DustManager.Instance.RemoveDust(); // 먼지 개수 업데이트
+            Color c = img.color;
+            c.a -= 0.002f;
+            img.color = c;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
