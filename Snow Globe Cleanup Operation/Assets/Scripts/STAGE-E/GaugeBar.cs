@@ -20,7 +20,7 @@ public class GaugeBar : MonoBehaviour
     {
         gaugeBar.value = 0;
         touchCnt = 0;
-        maxGauge = 1;
+        maxGauge = 70;
 
         if (PlayerPrefs.GetInt("STAGEC", 0) == 1)
         {
