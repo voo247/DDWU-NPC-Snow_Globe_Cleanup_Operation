@@ -32,6 +32,8 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         playerStartPosition = transform.position;
+        playerPosition = playerStartPosition;
+        Debug.Log(playerStartPosition);
 
         Collider2D snowball = Physics2D.OverlapCircle(transform.position, 4f, snowballLayer);
         snowballStartPosition = snowball.transform.position;
@@ -127,9 +129,16 @@ public class PlayerMove : MonoBehaviour
 
     public void Restart()
     {
-        transform.position = playerStartPosition;
-        lastMovedSnowball.transform.position = snowballStartPosition;
-        lastMovedSnowball.transform.localScale = snowballStartScale;
+        if (playerStartPosition != null)
+        {
+            transform.position = playerStartPosition;
+        }
+
+        if (lastMovedSnowball != null)
+        {
+            lastMovedSnowball.transform.position = snowballStartPosition;
+            lastMovedSnowball.transform.localScale = snowballStartScale;
+        }
 
         snowballMoveCnt = 0;
         isSnowballMoved = false;
