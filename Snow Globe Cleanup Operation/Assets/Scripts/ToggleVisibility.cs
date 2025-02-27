@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ToggleVisibility : MonoBehaviour
 {
-    public GameObject targetObject;     //! ´­·¶À» ¶§ ¿­¸± Ã¢(ÁöÁ¤ ÇÊ¼ö)
+    public GameObject targetObject;     //! ëˆŒë €ì„ ë•Œ ì—´ë¦´ ì°½(ì§€ì • í•„ìˆ˜)
     private bool flag = false;
 
     void Start()
