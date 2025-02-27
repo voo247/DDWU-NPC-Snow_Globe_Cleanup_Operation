@@ -5,8 +5,13 @@ public class transHome : MonoBehaviour
 {
     public void OnSuccessButtonClick(string stage)
     {
-        PlayerPrefs.SetInt(stage, 1); // 성공 상태 저장
+        PlayerPrefs.SetInt(stage, 1); 
         PlayerPrefs.Save();
-        SceneManager.LoadScene("MAIN"); // 메인 화면으로 이동
+        SceneManager.LoadScene("MAIN"); 
+    }
+
+    public void OnHomeButtonClick()
+    {
+        SceneManager.LoadScene("MAIN");
     }
 }

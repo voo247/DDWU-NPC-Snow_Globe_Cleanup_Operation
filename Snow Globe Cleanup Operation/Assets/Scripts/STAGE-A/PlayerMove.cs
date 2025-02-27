@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-    float moveDistance = 1f;
+    float moveDistance = 0.7f;
     public LayerMask wallLayer;
     public LayerMask snowballLayer;
     public LayerMask successLayer;
