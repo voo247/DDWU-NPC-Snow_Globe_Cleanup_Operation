@@ -25,7 +25,7 @@ public class Dust : MonoBehaviour
         RectTransform dustRect = GetComponent<RectTransform>();
         RectTransform handkerchiefRect = obj.GetComponent<RectTransform>();
 
-        return Vector2.Distance(dustRect.anchoredPosition, handkerchiefRect.anchoredPosition) < 200f;
+        return Vector2.Distance(dustRect.anchoredPosition, handkerchiefRect.anchoredPosition) < 300f;
     }
 
     void EraseDust()
@@ -33,7 +33,7 @@ public class Dust : MonoBehaviour
         if (img.color.a > 0.1f)
         {
             Color c = img.color;
-            c.a -= 0.002f;
+            c.a -= 0.0016f;
             img.color = c;
         }
         else
