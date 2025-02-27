@@ -37,14 +37,14 @@ public class TextManager : MonoBehaviour
             stageC.SetActive(true);
         }
 
-        if (PlayerPrefs.GetInt("STAGED", 0) == 1)
-        {
-            stageD.SetActive(false);
-        }
-        else
-        {
-            stageD.SetActive(true);
-        }
+        //if (PlayerPrefs.GetInt("STAGED", 0) == 1)
+        //{
+        //    stageD.SetActive(false);
+        //}
+        //else
+        //{
+        //    stageD.SetActive(true);
+        //}
 
         if (PlayerPrefs.GetInt("STAGEE", 0) == 1)
         {
