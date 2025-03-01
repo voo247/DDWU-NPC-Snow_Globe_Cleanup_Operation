@@ -31,10 +31,7 @@ public class Timer : MonoBehaviour
         if (PlayerPrefs.HasKey("TimerValue"))
         {
             now = PlayerPrefs.GetFloat("TimerValue");
-        }
-        else
-        {
-            ResetTimer();
+            Debug.Log(PlayerPrefs.HasKey("TimerValue"));
         }
     }
 
@@ -50,19 +47,8 @@ public class Timer : MonoBehaviour
                 PlayerPrefs.SetFloat("TimerValue", now);
                 PlayerPrefs.Save();
             }
-            else
-            {
-                Timer.Instance?.ResetTimer();
+            else //Time over
                 SceneManager.LoadScene("EndingStory_BAD");
-            }
         }
-    }
-
-    public void ResetTimer()
-    {
-        now = endTime;
-        PlayerPrefs.DeleteKey("TimerValue");
-        PlayerPrefs.Save();
-        timeSlider.value = 1.0f;
     }
 }

@@ -223,15 +223,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        if (parser.csvFile.name.Equals("StartStory")) {
-            Timer.Instance?.ResetTimer();
-            PlayerPrefs.DeleteKey("STAGEA");
-            PlayerPrefs.DeleteKey("STAGEB");
-            PlayerPrefs.DeleteKey("STAGEC");
-            PlayerPrefs.DeleteKey("STAGED");
-            PlayerPrefs.DeleteKey("STAGEE");
-            SceneManager.LoadScene("MAIN"); 
-        }
+        if (parser.csvFile.name.Equals("StartStory"))SceneManager.LoadScene("MAIN"); 
         if (parser.csvFile.name.Equals("HappyEnding"))SceneManager.LoadScene("HAPPYENDING");
         if (parser.csvFile.name.Equals("BadEnding"))SceneManager.LoadScene("BADENDING");
         // nameUI.text = "";
