@@ -4,7 +4,9 @@ public class TextManager : MonoBehaviour
 {
     public GameObject stageA;
     public GameObject stageB;
-    public GameObject stageC;
+    public GameObject stageC1;
+    public GameObject stageC2;
+    public GameObject stageC3;
     public GameObject stageD;
     public GameObject stageE;
 
@@ -30,11 +32,15 @@ public class TextManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("STAGEC", 0) == 1)
         {
-            stageC.SetActive(false);
+            stageC1.SetActive(false);
+            stageC2.SetActive(false);
+            stageC3.SetActive(false);
         }
         else
         {
-            stageC.SetActive(true);
+            stageC1.SetActive(true);
+            stageC2.SetActive(true);
+            stageC3.SetActive(true);
         }
 
         if (PlayerPrefs.GetInt("STAGED", 0) == 1)
