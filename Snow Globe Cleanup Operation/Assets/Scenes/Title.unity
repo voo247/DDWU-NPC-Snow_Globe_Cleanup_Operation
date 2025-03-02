@@ -1357,7 +1357,10 @@ MonoBehaviour:
   isMuted: 0
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   mainMenuMusic: {fileID: 8300000, guid: 2ca41f1d0f44948468101ad3d7ca5a9e, type: 3}
@@ -1365,6 +1368,9 @@ MonoBehaviour:
   badEndingMusic: {fileID: 8300000, guid: d0576c6522f5b5e488cbc3aed149f416, type: 3}
   happyEndingMusic: {fileID: 8300000, guid: 79f0a0576ad2b4344a4b9edb83b333ef, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
