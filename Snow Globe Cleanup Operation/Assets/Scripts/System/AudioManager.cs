@@ -1,8 +1,13 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 using System.Collections.Generic;
 using UnityEngine;
+=======
+using UnityEngine;
+using UnityEngine.SceneManagement;
+>>>>>>> Stashed changes
 =======
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,7 +28,10 @@ public class AudioManager : MonoBehaviour
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -36,6 +44,9 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -52,7 +63,10 @@ public class AudioManager : MonoBehaviour
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -68,6 +82,9 @@ public class AudioManager : MonoBehaviour
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -80,6 +97,12 @@ public class AudioManager : MonoBehaviour
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+>>>>>>> Stashed changes
 =======
 
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -106,10 +129,13 @@ public class AudioManager : MonoBehaviour
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private void UpdateAudio()
     {
         AudioListener.volume = isMuted ? 0f : 1f;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -152,6 +178,9 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = isMuted ? 0f : 1f;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
