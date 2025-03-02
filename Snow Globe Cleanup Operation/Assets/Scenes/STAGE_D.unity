@@ -1913,8 +1913,13 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_audioClip: {fileID: 8300000, guid: 7a3e4e2e65ac59c459cc162fe45c6c0e, type: 3}
   m_Resource: {fileID: 8300000, guid: 7a3e4e2e65ac59c459cc162fe45c6c0e, type: 3}
+=======
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+>>>>>>> Stashed changes
 =======
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}

@@ -1,6 +1,11 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 using System.Collections.Generic;
 using UnityEngine;
+=======
+using UnityEngine;
+using UnityEngine.SceneManagement;
+>>>>>>> Stashed changes
 =======
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,13 +16,19 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     public bool isMuted = false;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     public AudioClip mainMenuMusic;
     public AudioClip gameMusic;
     public AudioClip badEndingMusic;
     public AudioClip happyEndingMusic;
 
     private AudioSource audioSource;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     private void Awake()
@@ -28,7 +39,10 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
             audioSource = GetComponent<AudioSource>();
             if (audioSource == null)
             {
@@ -38,12 +52,21 @@ public class AudioManager : MonoBehaviour
             audioSource.loop = true;
             audioSource.playOnAwake = false;
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             if (PlayerPrefs.HasKey("Muted"))
             {
                 isMuted = PlayerPrefs.GetInt("Muted") == 1;
             }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+>>>>>>> Stashed changes
 =======
 
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -58,10 +81,13 @@ public class AudioManager : MonoBehaviour
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private void UpdateAudio()
     {
         AudioListener.volume = isMuted ? 0f : 1f;
 =======
+=======
+>>>>>>> Stashed changes
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Scene Loaded: " + scene.name);
@@ -98,6 +124,9 @@ public class AudioManager : MonoBehaviour
     private void UpdateAudio()
     {
         audioSource.volume = isMuted ? 0f : 1f;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 
