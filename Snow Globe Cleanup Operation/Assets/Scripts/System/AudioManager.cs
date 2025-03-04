@@ -5,7 +5,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public bool isMuted = false;
-    public AudioClip mainMenuMusic;
+    public AudioClip titleMusic;
+    public AudioClip storyMusic;
     public AudioClip gameMusic;
     public AudioClip badEndingMusic;
     public AudioClip happyEndingMusic;
@@ -47,14 +48,17 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("Scene Loaded: " + scene.name);
 
-        // 게임 씬인지 확인 (여러 개의 게임 씬을 관리)
-        if (scene.name.StartsWith("STAGE"))  // 게임 씬이 여러 개일 경우
+        if (scene.name == "Title")  
+        {
+            ChangeMusic(titleMusic);
+        }
+        else if (scene.name == "StartStory")
+        {
+            ChangeMusic(storyMusic);
+        }
+        else if (scene.name == "MAIN")
         {
             ChangeMusic(gameMusic);
-        }
-        else if (scene.name == "Main")
-        {
-            ChangeMusic(mainMenuMusic);
         }
         else if (scene.name == "EndingStory_BAD")
         {
