@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,9 +27,11 @@ public class PlayerMove : MonoBehaviour
     int snowballMoveCnt;
 
     bool isSnowballMoved;
+    bool isRestart;
 
     private void Start()
     {
+        isRestart = false;
         playerStartPosition = transform.position;
         playerPosition = playerStartPosition;
         Debug.Log(playerStartPosition);
@@ -64,6 +65,7 @@ public class PlayerMove : MonoBehaviour
 
     void Move(Vector2 direction, Sprite directionSprite)
     {
+        isRestart = false;
         playerImage.sprite = directionSprite;
         Vector2 targetPosition = (Vector2)transform.position + direction * moveDistance;
 
@@ -108,6 +110,8 @@ public class PlayerMove : MonoBehaviour
 
     public void Undo()
     {
+        if (isRestart) return;
+
         transform.position = playerPosition;
 
         if (isSnowballMoved && lastMovedSnowball != null)
@@ -146,5 +150,6 @@ public class PlayerMove : MonoBehaviour
 
         SuccessPanel.SetActive(false);
         playerImage.sprite = downPlayer;
+        isRestart = true;
     }
 }
