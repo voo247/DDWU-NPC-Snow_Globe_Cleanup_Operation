@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 238077539}
   - component: {fileID: 238077538}
   - component: {fileID: 238077537}
+  - component: {fileID: 238077541}
   m_Layer: 5
   m_Name: HelpButton
   m_TagString: Untagged
@@ -411,7 +412,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 238077539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 238077541}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &238077539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +463,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238077535}
   m_CullTransparentMesh: 1
+--- !u!82 &238077541
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238077535}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8f1200852eeae7147ac2ed623fe7edb2, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8f1200852eeae7147ac2ed623fe7edb2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &275782108
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd09690be6fafa4aba30164063812ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 1352556543}
   clothesType: 1
   snapTarget: {fileID: 997835903}
   snapThreshold: 50
@@ -821,6 +932,108 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &731895104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7508425520629476924, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+  m_PrefabInstance: {fileID: 1932379756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &731895109
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731895104}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8f1200852eeae7147ac2ed623fe7edb2, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8f1200852eeae7147ac2ed623fe7edb2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &732592125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd09690be6fafa4aba30164063812ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 1352556543}
   clothesType: 0
   snapTarget: {fileID: 946193776}
   snapThreshold: 500
@@ -1392,6 +1606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd09690be6fafa4aba30164063812ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 1352556543}
   clothesType: 0
   snapTarget: {fileID: 275782109}
   snapThreshold: 500
@@ -1648,6 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd09690be6fafa4aba30164063812ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 1352556543}
   clothesType: 1
   snapTarget: {fileID: 145374103}
   snapThreshold: 50
@@ -1909,6 +2125,7 @@ GameObject:
   - component: {fileID: 1352556539}
   - component: {fileID: 1352556538}
   - component: {fileID: 1352556542}
+  - component: {fileID: 1352556543}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2030,6 +2247,103 @@ MonoBehaviour:
   popUp: {fileID: 1880929895}
   popUpButton: {fileID: 238077538}
   continueButton: {fileID: 820551672}
+--- !u!82 &1352556543
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352556535}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8f1200852eeae7147ac2ed623fe7edb2, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8f1200852eeae7147ac2ed623fe7edb2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1375000191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,6 +2433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd09690be6fafa4aba30164063812ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 1352556543}
   clothesType: 1
   snapTarget: {fileID: 510843218}
   snapThreshold: 100
@@ -2543,6 +2858,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7880680508602615982, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880680508602615982, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880680508602615982, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 731895109}
+    - target: {fileID: 7880680508602615982, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880680508602615982, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880680508602615982, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880680508602615982, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9067055162351640371, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 802
@@ -2554,7 +2897,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7508425520629476924, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 731895109}
   m_SourcePrefab: {fileID: 100100000, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
 --- !u!1 &1998761923
 GameObject:
@@ -2790,6 +3136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd09690be6fafa4aba30164063812ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 1352556543}
   clothesType: 1
   snapTarget: {fileID: 1900044930}
   snapThreshold: 50
@@ -2895,6 +3242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd09690be6fafa4aba30164063812ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 1352556543}
   clothesType: 0
   snapTarget: {fileID: 1625864402}
   snapThreshold: 300
