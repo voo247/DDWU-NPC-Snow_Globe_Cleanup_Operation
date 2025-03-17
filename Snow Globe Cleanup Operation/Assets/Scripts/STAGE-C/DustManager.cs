@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 
+//all dust manager
 public class DustManager : MonoBehaviour
 {
     public GameObject Success;
