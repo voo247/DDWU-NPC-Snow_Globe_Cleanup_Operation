@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SettingButton : MonoBehaviour
@@ -10,11 +11,20 @@ public class SettingButton : MonoBehaviour
         if (settingPopupInstance == null)
         {
             settingPopupInstance = Instantiate(settingPopupPrefab);
-            Timer.Instance.stopObject[1] = settingPopupInstance;
+            StartCoroutine(WaitAndSetStopObject());
         }
         else
         {
             settingPopupInstance.SetActive(true);
         }
+    }
+
+    IEnumerator WaitAndSetStopObject()
+    {
+        // Timer.Instance가 null이면 기다림
+        while (Timer.Instance == null)
+            yield return null;
+
+        Timer.Instance.stopObject[1] = settingPopupInstance;
     }
 }

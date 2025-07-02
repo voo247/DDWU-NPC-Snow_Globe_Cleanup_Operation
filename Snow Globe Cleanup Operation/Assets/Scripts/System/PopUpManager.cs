@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PopUpManager : MonoBehaviour
@@ -9,7 +10,6 @@ public class PopUpManager : MonoBehaviour
 
     private void Start()
     {
-        //popUp.SetActive(false);
         popUpButton.onClick.AddListener(ShowPopUp);
         continueButton.onClick.AddListener(HidePopUp);
     }
