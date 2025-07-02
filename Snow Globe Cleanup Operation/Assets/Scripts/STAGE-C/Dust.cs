@@ -33,7 +33,7 @@ public class Dust : MonoBehaviour
         if (img.color.a > 0.1f)
         {
             Color c = img.color;
-            c.a -= 0.0016f;
+            c.a -= 0.007f;
             img.color = c;
         }
         else
