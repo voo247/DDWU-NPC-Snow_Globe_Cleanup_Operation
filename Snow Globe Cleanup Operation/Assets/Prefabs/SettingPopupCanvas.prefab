@@ -233,6 +233,7 @@ MonoBehaviour:
   muteButton: {fileID: 40449911811140895}
   unmuteButton: {fileID: 1743727111871784705}
   closeButton: {fileID: 7761330786282927476}
+  clickSound: {fileID: 7208470852583060698}
 --- !u!1 &8318198744394759069
 GameObject:
   m_ObjectHideFlags: 0
