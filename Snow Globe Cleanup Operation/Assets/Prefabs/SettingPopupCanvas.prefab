@@ -88,7 +88,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1273225856628323846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +233,7 @@ MonoBehaviour:
   muteButton: {fileID: 40449911811140895}
   unmuteButton: {fileID: 1743727111871784705}
   closeButton: {fileID: 7761330786282927476}
+  clickSound: {fileID: 7208470852583060698}
 --- !u!1 &8318198744394759069
 GameObject:
   m_ObjectHideFlags: 0
