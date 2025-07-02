@@ -5,6 +5,7 @@ public enum ClothesType { Old, New }
 
 public class DraggableClothes : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public AudioSource clickSound;
     public ClothesType clothesType;
     public RectTransform snapTarget;
     public float snapThreshold = 50f;
@@ -30,6 +31,7 @@ public class DraggableClothes : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        clickSound.PlayOneShot(clickSound.clip);
         originalPosition = rectTransform.anchoredPosition;
         isSnapped = false;
         canvasGroup.blocksRaycasts = false;

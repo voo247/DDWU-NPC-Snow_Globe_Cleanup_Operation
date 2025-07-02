@@ -9,8 +9,7 @@ public class PopUpManager : MonoBehaviour
 
     private void Start()
     {
-        popUp.SetActive(false);
-
+        //popUp.SetActive(false);
         popUpButton.onClick.AddListener(ShowPopUp);
         continueButton.onClick.AddListener(HidePopUp);
     }
