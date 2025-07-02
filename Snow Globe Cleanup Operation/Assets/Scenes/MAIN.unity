@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopObject:
   - {fileID: 903905704}
-  - {fileID: 903905704}
+  - {fileID: 367368568}
   timeSlider: {fileID: 82695063}
   endTime: 100
   now: 0
@@ -1371,6 +1371,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+--- !u!1 &367368568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9191312428165807882, guid: 5b97d8b23de78084a883dd62af0237ed, type: 3}
+  m_PrefabInstance: {fileID: 367368567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &378093405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,7 +2369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &903905705
 RectTransform:
   m_ObjectHideFlags: 0

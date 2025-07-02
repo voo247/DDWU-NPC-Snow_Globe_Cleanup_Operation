@@ -10,6 +10,7 @@ public class SettingButton : MonoBehaviour
         if (settingPopupInstance == null)
         {
             settingPopupInstance = Instantiate(settingPopupPrefab);
+            Timer.Instance.stopObject[1] = settingPopupInstance;
         }
         else
         {

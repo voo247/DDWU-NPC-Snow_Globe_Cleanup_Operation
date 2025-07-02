@@ -37,7 +37,7 @@ public class Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (stopObject[0].activeSelf == false && stopObject[1].activeSelf == false)
+        if (!stopObject[0].activeInHierarchy && !stopObject[1].activeInHierarchy)
         {
             if (now >= 0.0f)
             {
